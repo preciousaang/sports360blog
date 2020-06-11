@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('login', 'Users\LoginController@login')->middleware('guest:sanctum');
 Route::post('logout', 'Users\LoginController@logout');
+Route::post('add-post', 'PostsController@store')->middleware('auth:sanctum');
+Route::get('posts', 'PostsController@list');

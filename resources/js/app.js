@@ -9,7 +9,10 @@ require('./bootstrap');
 window.Vue = require('vue');
 import router from './router';
 import vuetify from './plugins/vuetify';
+import Vuelidate from 'vuelidate';
 
+import { TiptapVuetifyPlugin } from 'tiptap-vuetify'
+import 'tiptap-vuetify/dist/main.css';
 
 /**
  * The following block of code may be used to automatically register your
@@ -32,6 +35,13 @@ Vue.component('app-component', require('./components/AppComponent.vue').default)
  */
 
  // Vue.use(VueRouter);
+
+ Vue.use(TiptapVuetifyPlugin, {
+  // the next line is important! You need to provide the Vuetify Object to this place.
+  vuetify, // same as "vuetify: vuetify"
+  // optional, default to 'md' (default vuetify icons before v2.0.0)
+  iconsGroup: 'mdi'
+})
 
 const app = new Vue({
     vuetify,

@@ -10,6 +10,7 @@
     "watch-poll": "npm run watch -- --watch-poll"
   },
   "dependencies": {
+    "tiptap-vuetify": "^2.23.0",
     "vue-router": "^3.3.2",
     "vuelidate": "^0.7.5",
     "vuetify": "^2.2.11"

@@ -40,13 +40,22 @@
                     password: this.password
                 };
                 axios.get('/sanctum/csrf-cookie').then(response => {
-                    axios.post('/api/login', data).then(response=>{
-                        console.log(response);
+                    axios.post('/login', data).then(response=>{
+                        this.$router.push('/dashboard');
                     }).catch(error=>{
                         console.log(error.response);
                     })
                 });
             }
+        },
+        beforeRouteEnter(to, from , next){
+            axios.get('/user').then(response=>{
+                if(response.status===200){
+                    next('/dashboard');
+                }
+            }).catch(err=>{
+                next();
+            });
         }
     }
 </script>
