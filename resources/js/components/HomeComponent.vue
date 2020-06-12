@@ -6,9 +6,8 @@
                 <v-col xs="12" sm="12" lg="8">
                     <post-card v-for="post of posts" :key="post.id" :post="post"></post-card>
                 </v-col>
-                <v-col  xs="12" sm="12" lg="4">
-                    <h3>Match Preview</h3>
-                    <iframe frameborder="0" width="100%"  scrolling="no" src="https://www.fctables.com/europeanchampionship/iframe/?type=table&lang_id=2&country=67&template=12&stage=17188&team=186106&timezone=Africa/Lagos&time=24&po=1&ma=1&wi=1&dr=1&los=1&gf=0&ga=0&gd=1&pts=1&ng=0&form=0&width=520&height=700&font=Verdana&fs=12&lh=22&bg=FFFFFF&fc=333333&logo=1&tlink=1&ths=1&thb=1&thba=FFFFFF&thc=000000&bc=dddddd&hob=f5f5f5&hobc=ebe7e7&lc=333333&sh=1&hfb=1&hbc=3bafda&hfc=FFFFFF"></iframe><div style="text-align:center;"></div>
+                <v-col xs="12" sm="12" lg="4">
+                    
                 </v-col>
             </v-row>
         </v-container>

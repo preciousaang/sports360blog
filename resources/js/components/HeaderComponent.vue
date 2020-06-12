@@ -5,15 +5,11 @@
 
             <v-spacer></v-spacer>
 
-              <ul class="navbar">
-                  <li v-for="item in items" class="nav-item">
-                      <router-link class="nav-link black--text title" :to="item.route">{{item.text}}</router-link>
-                  </li>
-              </ul>
-
-           </v-list>
-            <v-spacer></v-spacer>
-
+            <v-toolbar-items>
+                <v-btn v-for="item in items" :key="item.text" :to="item.route">
+                    {{item.text}}
+                </v-btn>
+            </v-toolbar-items>
             <v-btn icon>
                 <v-icon>mdi-magnify</v-icon>
             </v-btn>
@@ -35,18 +31,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
-ul.navbar{
 
-}
-li.nav-item{
-    display: inline-block;;
-    margin-right: 3px;
-}
-a.nav-link{
-    text-decoration: none;
-}
-
-a.nav-link:hover{
-    text-decoration: underline;
-}
 </style>
