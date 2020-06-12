@@ -2,7 +2,7 @@
     <div>
         <v-container>
             <v-row :align="'center'" :justify="'center'" no-gutters>
-                <v-col :cols="'5'">
+                <v-col lg="5" md="10" sm="10" xs="10">
                     <v-card outlined>
                         <v-toolbar dark>
                             <v-toolbar-title>Login</v-toolbar-title>

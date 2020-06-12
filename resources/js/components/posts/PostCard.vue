@@ -1,20 +1,23 @@
 <template>
     <div>
-        <v-card class="mx-auto">
+        <v-card class="mb-5">
             <v-img :src="post.image">
             </v-img>
-            <v-card-title>{{post.title}}</v-card-title>
+
+            <v-card-title>
+                {{post.title}}
+            </v-card-title>
+
+
             <v-divider>
-                
+
             </v-divider>
             <div class="d-flex">
                 <v-card-subtitle>by {{post.user.name}}</v-card-subtitle>
                 <v-spacer>
-
                 </v-spacer>
-                <v-card-subtitle>{{post.created_at}}</v-card-subtitle>
+                <v-card-subtitle>{{post.created_at | moment('from', 'now')}}</v-card-subtitle>
             </div>
-
         </v-card>
     </div>
 </template>
@@ -24,6 +27,9 @@ export default {
     props: {
         post: Object,
     },
+    methods: {
+
+    }
 }
 </script>
 
