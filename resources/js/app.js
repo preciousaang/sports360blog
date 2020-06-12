@@ -41,7 +41,9 @@ Vue.component('app-component', require('./components/AppComponent.vue').default)
   vuetify, // same as "vuetify: vuetify"
   // optional, default to 'md' (default vuetify icons before v2.0.0)
   iconsGroup: 'mdi'
-})
+});
+
+Vue.use(require('vue-moment'));
 
 const app = new Vue({
     vuetify,
