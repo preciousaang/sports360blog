@@ -1,10 +1,10 @@
 <template>
     <div>
-        <v-toolbar dense>
-            <v-img class="mr-4" :src="require('./logo.png')" width="60">
+        <v-toolbar>
+            <v-img class="logo" :src="require('./logo.png')" contain>
 
             </v-img>
-            <v-toolbar-title><h3> Blog</h3></v-toolbar-title>
+
 
             <v-spacer></v-spacer>
 
@@ -37,5 +37,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+    .logo{
+        height: 100%;        
+    }
 </style>
