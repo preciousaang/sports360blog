@@ -19,18 +19,16 @@
             <v-app-bar-nav-icon @click="drawer = !drawer" class="d-lg-none d-xl-flex"></v-app-bar-nav-icon>
         </v-toolbar>
         <v-navigation-drawer absolute temporary v-model="drawer">
+            <v-img class="logo" height="50" :src="require('./logo.png')" contain></v-img>
+            <v-divider></v-divider>
             <v-list nav dense>
-                <v-subheader>
-                    Menu
-                </v-subheader>
                 <v-list-item-group>
                     <v-list-item :to="item.route" v-for="item in items" :key="item.text">
                         <v-list-item-icon>
                             <v-icon v-text="item.icon"></v-icon>
                         </v-list-item-icon>
                         <v-list-item-content>
-                            <v-list-item-title>
-                                {{item.text}}
+                            <v-list-item-title v-text="item.text">
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
