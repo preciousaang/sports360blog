@@ -1,7 +1,10 @@
 <template>
     <div>
         <v-toolbar dense>
-            <v-toolbar-title><h3>Bet 360 Pro Blog</h3></v-toolbar-title>
+            <v-img class="mr-4" :src="require('./logo.png')" width="60">
+
+            </v-img>
+            <v-toolbar-title><h3> Blog</h3></v-toolbar-title>
 
             <v-spacer></v-spacer>
 

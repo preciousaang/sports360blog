@@ -33,8 +33,8 @@ export default {
         }
     },
     created: function(){
-        this.getUser();
-    },    
+        this.getUser();        
+    },
 }
 </script>
 
