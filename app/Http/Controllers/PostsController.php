@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Http\Resources\PostResource;
+use JD\Cloudder\Facades\Cloudder;
 
 class PostsController extends Controller
 {
@@ -14,7 +15,7 @@ class PostsController extends Controller
             'body'=>'required',
             'image'=>'required'
         ]);
-        $image = basename($request->file('image')->store('public/uploads'));
+        $image = Cloudder::upload($request->file('image'))->getResult()['url'];
         $newPost = Post::create([
             'category_id'=>1,
             'title'=>$request->title,
