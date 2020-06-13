@@ -10,6 +10,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body>
+        <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=1018801445144895&autoLogAppEvents=1" nonce="0ymS2L93"></script>
     <div id="app">
         <app-component></app-component>
     </div>
@@ -18,5 +20,7 @@
     @else
     <script src="{{secure_asset('js/app.js')}}"></script>
     @endif
+    <div id="fb-root"></div>
+
     </body>
 </html>

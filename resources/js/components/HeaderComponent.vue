@@ -1,14 +1,14 @@
 <template>
     <div>
         <v-toolbar>
-            <v-img class="logo" :src="require('./logo.png')" contain>
-
-            </v-img>
-
-
+            <v-toolbar-items>
+                <router-link to="/">
+                    <v-img class="logo" :src="require('./logo.png')" contain></v-img>
+                </router-link>
+            </v-toolbar-items>
             <v-spacer></v-spacer>
 
-            <v-toolbar-items>
+            <v-toolbar-items class="d-none d-lg-block">
                 <v-btn dense v-for="item in items" :key="item.text" :to="item.route">
                     {{item.text}}
                 </v-btn>
@@ -16,7 +16,28 @@
             <v-btn icon>
                 <v-icon>mdi-magnify</v-icon>
             </v-btn>
+            <v-app-bar-nav-icon @click="drawer = !drawer" class="d-lg-none d-xl-flex"></v-app-bar-nav-icon>
         </v-toolbar>
+        <v-navigation-drawer absolute temporary v-model="drawer">
+            <v-list nav dense>
+                <v-subheader>
+                    Menu
+                </v-subheader>
+                <v-list-item-group>
+                    <v-list-item :to="item.route" v-for="item in items" :key="item.text">
+                        <v-list-item-icon>
+                            <v-icon v-text="item.icon"></v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                {{item.text}}
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list-item-group>
+
+            </v-list>
+        </v-navigation-drawer>
     </div>
 </template>
 
@@ -25,12 +46,13 @@ export default {
     data(){
         return {
             items: [
-                {text: 'Home', route: '/'},
-                {text: 'Football News', route: '/football-news'},
-                {text: 'Sports Lifestyle', route: '/sports-liftstyle'},
-                {text: 'Match Previews', route: '/sports-previews'},
-                {text: 'About Us', route: '/about-us'}
-            ]
+                {text: 'Home', route: '/', icon: 'mdi-home'},
+                {text: 'Football News', route: '/football-news', icon: 'mdi-newspaper'},
+                {text: 'Sports Lifestyle', route: '/sports-liftstyle', icon: 'mdi-tshirt-crew-outline'},
+                {text: 'Match Previews', route: '/sports-previews', icon: 'mdi-microscope'},
+                {text: 'About Us', route: '/about-us', icon: 'mdi-account-group'}
+            ],
+            drawer: false,
         }
     }
 }
@@ -38,6 +60,6 @@ export default {
 
 <style lang="css" scoped>
     .logo{
-        height: 100%;        
+        height: 100%;
     }
 </style>
