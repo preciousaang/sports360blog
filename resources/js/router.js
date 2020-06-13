@@ -5,6 +5,7 @@ import DashboardComponent from './components/auth/DashboardComponent';
 import NotFoundComponent from './components/NotFoundComponent';
 import AddPostComponent from './components/AddPostComponent';
 import HomeComponent from './components/HomeComponent';
+import SinglePost from './components/posts/SinglePost';
 
 Vue.use(VueRouter);
 
@@ -13,6 +14,7 @@ Vue.use(VueRouter);
 const routes = [
     {path: '/', component: HomeComponent},
     {path: '/login', component: LoginComponent},
+    {path: '/post/:id', component: SinglePost},
     {path: '/dashboard', component: DashboardComponent},
     {path: '/add-post', component: AddPostComponent},
     {path: '**', component: NotFoundComponent}

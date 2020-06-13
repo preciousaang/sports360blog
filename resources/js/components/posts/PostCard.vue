@@ -1,17 +1,11 @@
 <template>
     <div>
-        <v-card class="mb-5">
-            <v-img :src="post.image">
-            </v-img>
-
+        <v-card  :to="'/post/'+post.id" class="mb-5">
+            <v-img :src="post.image"></v-img>
             <v-card-title>
                 {{post.title}}
             </v-card-title>
-
-
-            <v-divider>
-
-            </v-divider>
+            <v-divider></v-divider>
             <div class="d-flex">
                 <v-card-subtitle>by {{post.user.name}}</v-card-subtitle>
                 <v-spacer>

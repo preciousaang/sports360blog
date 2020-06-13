@@ -6,7 +6,7 @@
             <v-spacer></v-spacer>
 
             <v-toolbar-items>
-                <v-btn v-for="item in items" :key="item.text" :to="item.route">
+                <v-btn dense v-for="item in items" :key="item.text" :to="item.route">
                     {{item.text}}
                 </v-btn>
             </v-toolbar-items>
@@ -23,6 +23,9 @@ export default {
         return {
             items: [
                 {text: 'Home', route: '/'},
+                {text: 'Football News', route: '/football-news'},
+                {text: 'Sports Lifestyle', route: '/sports-liftstyle'},
+                {text: 'Match Previews', route: '/sports-previews'},
                 {text: 'About Us', route: '/about-us'}
             ]
         }

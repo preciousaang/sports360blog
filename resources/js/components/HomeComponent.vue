@@ -3,11 +3,12 @@
         <header-component></header-component>
         <v-container>
             <v-row>
-                <v-col xs="12" sm="12" lg="8">
+                <v-col cols="12" xs="12" sm="12" lg="8">
+                    <v-skeleton-loader v-if="!posts.length" v-for="n in 3" :key="n" type="card, list-item" :loading="loading"></v-skeleton-loader>
                     <post-card v-for="post of posts" :key="post.id" :post="post"></post-card>
                 </v-col>
-                <v-col xs="12" sm="12" lg="4">
-                    
+                <v-col cols="12" xs="12" sm="12" lg="4">
+                    <h2 class="text-center">Popular Posts</h2>
                 </v-col>
             </v-row>
         </v-container>
@@ -26,6 +27,7 @@ export default {
     data(){
         return {
             posts: [],
+            loading: true,
         }
     },
     methods: {

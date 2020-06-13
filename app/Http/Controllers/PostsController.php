@@ -27,7 +27,12 @@ class PostsController extends Controller
     }
 
     public function list(){
-        $posts = Post::all();
+        $posts = Post::latest()->get();
         return PostResource::collection($posts);
+    }
+
+    public function single($id){
+        $post = Post::find($id);
+        return response()->json(new PostResource($post));
     }
 }
