@@ -12,6 +12,10 @@
     <div id="app">
         <app-component></app-component>
     </div>
+    @if(config('app.debug'))
+    <script src="{{asset('js/app.js')}}"></script>
+    @else
     <script src="{{secure_asset('js/app.js')}}"></script>
+    @endif
     </body>
 </html>
