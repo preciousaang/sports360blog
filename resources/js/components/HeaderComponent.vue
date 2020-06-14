@@ -2,7 +2,7 @@
     <div>
         <v-toolbar>
             <v-toolbar-items>
-                <router-link to="/">
+                <router-link :to="{name: 'homepage'}">
                     <v-img class="logo" :src="require('./logo.png')" contain></v-img>
                 </router-link>
             </v-toolbar-items>
@@ -28,8 +28,7 @@
                             <v-icon v-text="item.icon"></v-icon>
                         </v-list-item-icon>
                         <v-list-item-content>
-                            <v-list-item-title v-text="item.text">
-                            </v-list-item-title>
+                            <v-list-item-title v-text="item.text"></v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                 </v-list-item-group>
@@ -44,7 +43,7 @@ export default {
     data(){
         return {
             items: [
-                {text: 'Home', route: '/', icon: 'mdi-home'},
+                {text: 'Home', route: {name: 'homepage'}, icon: 'mdi-home'},
                 {text: 'Football News', route: '/football-news', icon: 'mdi-newspaper'},
                 {text: 'Sports Lifestyle', route: '/sports-liftstyle', icon: 'mdi-tshirt-crew-outline'},
                 {text: 'Match Previews', route: '/sports-previews', icon: 'mdi-microscope'},

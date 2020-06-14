@@ -13,11 +13,14 @@
 
 <script>
 export default {
-        data(){
-            return{
-                
-            }
+    data(){
+        return{
+
         }
+    },
+    metaInfo: {
+        titleTemplate: '%s | Betpro 360 Blog',
+    }
 }
 </script>
 

@@ -30,6 +30,9 @@ export default {
             loading: true,
         }
     },
+    metaInfo: {
+        title: 'Welcome',        
+    },
     methods: {
         getPosts: function(){
             axios.get('/posts').then(res=>{

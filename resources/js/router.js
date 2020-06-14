@@ -3,23 +3,46 @@ import VueRouter from 'vue-router';
 import LoginComponent from './components/auth/LoginComponent';
 import DashboardComponent from './components/auth/DashboardComponent';
 import NotFoundComponent from './components/NotFoundComponent';
-import AddPostComponent from './components/AddPostComponent';
+import AddPostComponent from './components/auth/AddPostComponent';
 import HomeComponent from './components/HomeComponent';
 import SinglePost from './components/posts/SinglePost';
+import AdminComponent from './components/auth/AdminComponent';
 
 Vue.use(VueRouter);
+
+import user from './mixins/user';
 
 
 
 const routes = [
-    {path: '/', component: HomeComponent},
-    {path: '/login', component: LoginComponent},
-    {path: '/post/:id', component: SinglePost},
-    {path: '/dashboard', component: DashboardComponent},
-    {path: '/add-post', component: AddPostComponent},
+    {path: '/', component: HomeComponent, name: 'homepage'},
+    {path: '/login', component: LoginComponent, name: 'login', beforeEnter: (to, from , next)=>{
+        user.isLoggedIn(res=>{
+            if(res){
+                next('/admin');
+            }else{
+                next();
+            }
+        });
+    }},
+    {path: '/post/:id', component: SinglePost, name: 'single-post'},
+    {path: '/admin', component: AdminComponent, children: [
+        {path: '', component: DashboardComponent, name: 'dashboard'},
+        {path: 'add-post', component: AddPostComponent, name: 'add-post'},
+
+    ], beforeEnter: (to, from, next)=>{
+        user.isLoggedIn(res=>{
+            if(!res){
+                next('/login');
+            }else{
+                next();
+            }
+        })
+    }},
     {path: '**', component: NotFoundComponent}
 
 ]
+
 
 
 const router = new VueRouter({
@@ -27,6 +50,8 @@ const router = new VueRouter({
     history: true,
     routes,
 });
+
+
 
 
 export default router;

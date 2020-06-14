@@ -33,6 +33,17 @@
                 password: null
             }
         },
+        metaInfo: {
+
+            title: 'Login',
+            meta: [
+                {
+                    name: 'description',
+                    content: 'Login to manage posts in Bet pro 360'
+                }
+            ]
+
+        },
         methods: {
             login: function(){
                 const data = {
@@ -41,22 +52,13 @@
                 };
                 axios.get('/sanctum/csrf-cookie').then(response => {
                     axios.post('/login', data).then(response=>{
-                        this.$router.push('/dashboard');
+                        this.$router.push('/admin');
                     }).catch(error=>{
                         console.log(error.response);
                     })
                 });
             }
         },
-        beforeRouteEnter(to, from , next){
-            axios.get('/user').then(response=>{
-                if(response.status===200){
-                    next('/dashboard');
-                }
-            }).catch(err=>{
-                next();
-            });
-        }
     }
 </script>
 

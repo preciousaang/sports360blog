@@ -1,9 +1,11 @@
 <template>
   <div>
-      <header-component></header-component>
-      <v-content>
 
-      </v-content>
+
+
+      <v-container>
+           <h3>Admin Dashboard</h3>
+      </v-container>
   </div>
 </template>
 
@@ -11,7 +13,6 @@
 import axios from 'axios';
 
 
-import HeaderComponent from '../AdminHeaderComponent';
 export default {
     data(){
         return {
@@ -21,7 +22,12 @@ export default {
         }
     },
     components: {
-        'header-component': HeaderComponent,
+
+    },
+    metaInfo(){
+        return {
+            title: 'Admin Dashboard'
+        }
     },
     methods:{
         getUser: function(){
@@ -33,7 +39,7 @@ export default {
         }
     },
     created: function(){
-        this.getUser();        
+        this.getUser();
     },
 }
 </script>

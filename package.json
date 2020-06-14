@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "tiptap-vuetify": "^2.23.0",
+    "vue-meta": "^2.4.0",
     "vue-moment": "^4.1.0",
     "vue-router": "^3.3.2",
     "vuelidate": "^0.7.5",

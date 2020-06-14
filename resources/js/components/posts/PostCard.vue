@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-card  :to="'/post/'+post.id" class="mb-5">
+        <v-card  :to="{name: 'single-post', params: {id: post.id}}" class="mb-5">
             <v-img :src="post.image"></v-img>
             <v-card-title>
                 {{post.title}}

@@ -20,7 +20,7 @@
                     </v-card>
                 </v-col>
                 <v-col cols="12" xs="12" md="4" sm="12" lg="4">
-                    <h4>dd</h4>                    
+                    <h4>dd</h4>
                 </v-col>
             </v-row>
         </v-container>
@@ -47,6 +47,12 @@ export default {
             }).catch(err=>{
                 console.log(err);
             });
+        }
+    },
+    
+    metaInfo(){
+        return {
+            title: this.post ? this.post.title : 'Post Not Found',
         }
     },
     mounted(){
