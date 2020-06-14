@@ -14,7 +14,7 @@
                             <v-text-field :error-messages="titleErrors" @input="$v.title.$touch()" @blur="$v.title.$touch()" v-model="title" label="Post Title"></v-text-field>
                             <tiptap-vuetify  placeholder="Post Body" :extensions="extensions" @input="$v.body.$touch()" @blur="$v.body.$touch()" v-model="body" label="Post Body"></tiptap-vuetify>
 
-                                <p v-if="!$v.body.required" class="caption red--text">Body is required</p>
+                                <p class="caption red--text">{{this.bodyErrors[0]}}</p>
 
                             <v-file-input :error-messages="imageErrors" @input="$v.image.$touch()" @blur="$v.image.$touch()" label="Post Image" ref="files" v-model="image"></v-file-input>
                             <v-btn class="ml-8" type="submit">
@@ -33,6 +33,7 @@
 <script>
 import {validationMixin} from 'vuelidate';
 import {required} from 'vuelidate/lib/validators';
+import swal from 'sweetalert';
 import { TiptapVuetify, Heading, Bold, Italic, Image, Strike, Underline, Code, Paragraph, BulletList, OrderedList, ListItem, Link, Blockquote, HardBreak, HorizontalRule, History } from 'tiptap-vuetify'
 export default {
     components: {
@@ -93,12 +94,12 @@ export default {
             return errors;
         },
 
-        // bodyErrors(){
-        //     const errors = [];
-        //     if(!this.$v.body.$dirty) return errors;
-        //     !this.$v.body.required && errors.push('Body is required');
-        //     return errors;
-        // }
+        bodyErrors(){
+            const errors = [];
+            if(!this.$v.body.$dirty) return errors;
+            !this.$v.body.required && errors.push('Body is required');
+            return errors;
+        }
     },
     methods: {
         addPost: function(){
@@ -113,9 +114,10 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }
             }).then(response=>{
-                console.log(response);
+                swal({title: 'Post Created Successfully', icon: 'success'});
+                this.$router.push({name: 'edit-post', params: {id: response.data.id}});
             }).catch(err=>{
-                console.log(err.response);
+                swal("", "Something Went Wrong", "error");
             });
         }
     },

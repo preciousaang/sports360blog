@@ -1,5 +1,5 @@
 <template>
-<div>    
+<div>
     <v-navigation-drawer permanent expand-on-hover app>
         <router-link :to="{name: 'dashboard'}">
         <v-img class="logo" height="50" :src="require('../logo.png')" contain></v-img>
@@ -23,6 +23,11 @@
                       </v-list-item-content>
                     </template>
                     <v-list-item :to="child.route" v-for="child in item.children" :key="child.text">
+                        <v-list-item-icon>
+                            <v-icon v-text="child.icon">
+
+                            </v-icon>
+                        </v-list-item-icon>
                         <v-list-item-content>
                             <v-list-item-title v-text="child.text">
                             </v-list-item-title>
@@ -52,7 +57,9 @@ export default {
             items: [
                 {text: 'Dashboard', icon: 'mdi-view-dashboard', route: {name: 'dashboard'}},
                 {text: 'Posts', icon: 'mdi-file', route: '#', children: [
-                    {text: 'Add Post', icon: 'mdi-file', route: {name: 'add-post'}}
+                    {text: 'Manage Posts', icon: 'mdi-file', route: '/posts'},
+                    {text: 'Add Post', icon: 'mdi-file-plus', route: {name: 'add-post'}},
+
                 ]},
             ]
         }

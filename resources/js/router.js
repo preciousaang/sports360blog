@@ -7,6 +7,7 @@ import AddPostComponent from './components/auth/AddPostComponent';
 import HomeComponent from './components/HomeComponent';
 import SinglePost from './components/posts/SinglePost';
 import AdminComponent from './components/auth/AdminComponent';
+import EditPostComponent from './components/auth/EditPostComponent'
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,7 @@ const routes = [
     {path: '/admin', component: AdminComponent, children: [
         {path: '', component: DashboardComponent, name: 'dashboard'},
         {path: 'add-post', component: AddPostComponent, name: 'add-post'},
+        {path: 'edit-post/:id', component: EditPostComponent, name: 'edit-post'},
 
     ], beforeEnter: (to, from, next)=>{
         user.isLoggedIn(res=>{
