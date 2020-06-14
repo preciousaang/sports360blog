@@ -1,8 +1,5 @@
 <template>
   <div>
-
-
-
       <v-container>
            <h3>Admin Dashboard</h3>
       </v-container>

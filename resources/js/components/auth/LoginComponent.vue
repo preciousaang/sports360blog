@@ -8,6 +8,7 @@
                             <v-toolbar-title>Login</v-toolbar-title>
                         </v-toolbar>
                         <v-container>
+                            <v-alert dismissible v-if="error" type="error" v-text="error"></v-alert>
                             <v-form @submit.prevent="login()">
                                 <v-text-field v-model="username" label="Username" prepend-icon="mdi-account"></v-text-field>
                                 <v-text-field v-model="password" type="password" label="Password" prepend-icon="mdi-lock"></v-text-field>
@@ -29,6 +30,7 @@
     export default{
         data(){
             return {
+                error: null,
                 username: null,
                 password: null
             }
@@ -52,9 +54,10 @@
                 };
                 axios.get('/sanctum/csrf-cookie').then(response => {
                     axios.post('/login', data).then(response=>{
+                        this.error=null;
                         this.$router.push('/admin');
                     }).catch(error=>{
-                        console.log(error.response);
+                        this.error = error.response.data.error;
                     })
                 });
             }

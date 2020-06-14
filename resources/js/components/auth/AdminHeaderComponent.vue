@@ -36,13 +36,23 @@
                         </v-list-item-content>
                     </v-list-item>
                 </v-list-group>
+
             </template>
+            <v-list-item @click.prevent="logout()" link>
+                <v-list-item-icon>
+                    <v-icon>mdi-logout</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title >
+                    Logout
+                </v-list-item-title>
+            </v-list-item>
         </v-list>
     </v-navigation-drawer>
 </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data(){
         return {
@@ -52,6 +62,13 @@ export default {
                     {text: 'Add Post', icon: 'mdi-file', route: {name: 'add-post'}}
                 ]},
             ]
+        }
+    },
+    methods: {
+        logout(){
+            axios.post('/logout').then(res=>{
+                this.$router.push({name: 'login'});
+            });
         }
     }
 }
