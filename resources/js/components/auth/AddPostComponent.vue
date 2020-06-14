@@ -44,6 +44,9 @@ export default {
         body: {required},
         image: {required}
     },
+    metaInfo: {
+        title: 'Add New Post'
+    },
     data(){
         return {
             title: null,

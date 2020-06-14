@@ -14,17 +14,29 @@
         <v-divider>
 
         </v-divider>
-        <v-list nav dense>
-            <v-list-item>
-                <v-list-item link :to="{name: 'dashboard'}">
+        <v-list nav dense flat>
+            <template v-for="item in items">
+                <v-list-item v-if="!item.children" link :to="item.route">
                     <v-list-item-icon>
-                        <v-icon>mdi-view-dashboard</v-icon>
+                        <v-icon v-text="item.icon"></v-icon>
                     </v-list-item-icon>
-                    <v-list-item-title>
-                        Dashboard
+                    <v-list-item-title v-text="item.text">
                     </v-list-item-title>
                 </v-list-item>
-            </v-list-item>
+                <v-list-group :prepend-icon="item.icon" v-else no-action>
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item.text"></v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item :to="child.route" v-for="child in item.children" :key="child.text">
+                        <v-list-item-content>
+                            <v-list-item-title v-text="child.text">
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list-group>
+            </template>
         </v-list>
     </v-navigation-drawer>
 </div>
@@ -32,7 +44,16 @@
 
 <script>
 export default {
-
+    data(){
+        return {
+            items: [
+                {text: 'Dashboard', icon: 'mdi-view-dashboard', route: {name: 'dashboard'}},
+                {text: 'Posts', icon: 'mdi-file', route: '#', children: [
+                    {text: 'Add Post', icon: 'mdi-file', route: {name: 'add-post'}}
+                ]},
+            ]
+        }
+    }
 }
 </script>
 
