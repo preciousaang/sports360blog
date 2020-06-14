@@ -2,9 +2,9 @@
 <div>
     <v-container>
         <v-row :justify="'center'">
-            <v-col :cols="'8'">
+            <v-col cols="12" md="12" sm="12">
                 <v-card>
-                    <v-app-bar flat>
+                    <v-app-bar flat dark>
                       <v-toolbar-title>
                           Add Post
                       </v-toolbar-title>
@@ -13,9 +13,9 @@
                         <v-form @submit.prevent="addPost()">
                             <v-text-field :error-messages="titleErrors" @input="$v.title.$touch()" @blur="$v.title.$touch()" v-model="title" label="Post Title"></v-text-field>
                             <tiptap-vuetify  placeholder="Post Body" :extensions="extensions" @input="$v.body.$touch()" @blur="$v.body.$touch()" v-model="body" label="Post Body"></tiptap-vuetify>
-                            <div v-if="$v.body.$dirty">
+
                                 <p v-if="!$v.body.required" class="caption red--text">Body is required</p>
-                            </div>
+
                             <v-file-input :error-messages="imageErrors" @input="$v.image.$touch()" @blur="$v.image.$touch()" label="Post Image" ref="files" v-model="image"></v-file-input>
                             <v-btn class="ml-8" type="submit">
                                 Add Post
@@ -32,7 +32,7 @@
 
 <script>
 import {validationMixin} from 'vuelidate';
-import {required, maxLength, minLength} from 'vuelidate/lib/validators';
+import {required} from 'vuelidate/lib/validators';
 import { TiptapVuetify, Heading, Bold, Italic, Image, Strike, Underline, Code, Paragraph, BulletList, OrderedList, ListItem, Link, Blockquote, HardBreak, HorizontalRule, History } from 'tiptap-vuetify'
 export default {
     components: {

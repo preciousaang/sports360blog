@@ -1,12 +1,5 @@
 <template>
-<div>
-    <v-toolbar>
-        <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
-        <v-toolbar-title>
-            Restricted Area
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-    </v-toolbar>
+<div>    
     <v-navigation-drawer permanent expand-on-hover app>
         <router-link :to="{name: 'dashboard'}">
         <v-img class="logo" height="50" :src="require('../logo.png')" contain></v-img>
