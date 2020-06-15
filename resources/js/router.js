@@ -8,6 +8,8 @@ import HomeComponent from './components/HomeComponent';
 import SinglePost from './components/posts/SinglePost';
 import AdminComponent from './components/auth/AdminComponent';
 import EditPostComponent from './components/auth/EditPostComponent'
+import ManagePostsComponent from './components/auth/ManagePostsComponent'
+import swal from 'sweetalert';
 
 Vue.use(VueRouter);
 
@@ -31,10 +33,12 @@ const routes = [
         {path: '', component: DashboardComponent, name: 'dashboard'},
         {path: 'add-post', component: AddPostComponent, name: 'add-post'},
         {path: 'edit-post/:id', component: EditPostComponent, name: 'edit-post'},
+        {path: 'manage-posts', component: ManagePostsComponent, name: 'manage-posts'},
 
     ], beforeEnter: (to, from, next)=>{
         user.isLoggedIn(res=>{
             if(!res){
+                swal({title: 'You must be logged in.', icon: 'error'});
                 next('/login');
             }else{
                 next();

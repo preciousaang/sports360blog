@@ -121,17 +121,7 @@ export default {
             });
         }
     },
-    beforeRouteEnter (to, from, next){
-        axios.get('/user').then(response=>{
-            if(response.status===200){
-                next();
-            }else{
-                next('/login');
-            }
-        }).catch(err=>{
-            next('/login');
-        });
-    }
+    
 }
 </script>
 

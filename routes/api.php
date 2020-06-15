@@ -22,4 +22,7 @@ Route::post('login', 'Users\LoginController@login')->middleware('guest:sanctum')
 Route::post('logout', 'Users\LoginController@logout');
 Route::post('add-post', 'PostsController@store')->middleware('auth:sanctum');
 Route::get('posts', 'PostsController@list');
+Route::get('all-posts/{opt?}', 'PostsController@allPosts');
 Route::get('post/{id}', 'PostsController@single');
+Route::delete('post/{id}', 'PostsController@delete')->middleware('auth:sanctum');
+Route::post('post/{id}/edit', 'PostsController@update')->middleware('auth:sanctum');

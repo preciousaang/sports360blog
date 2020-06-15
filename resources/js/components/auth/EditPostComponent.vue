@@ -9,8 +9,39 @@
                       </v-toolbar-title>
                     </v-app-bar>
                     <v-container>
-                        <v-form>
-                            <v-text-field :error-messages="titleErrors" @input="$v.title.$touch()" @blur="$v.title.$touch()" v-model="title" label="Post Title"></v-text-field>
+                        <v-form @submit.prevent="updatePost()">
+                            <v-text-field  v-model="post.title" label="Post Title"></v-text-field>
+                            <p v-if="errors.title" class="red--text" v-text="errors.title">
+
+                            </p>
+                            <wysiwyg  placeholder="Post Body" v-model="post.body" label="Post Body"></wysiwyg>
+                            <p v-if="errors.body" class="red--text" v-text="errors.body">
+
+                            </p>
+
+
+                            <v-card class="mb-3" max-width="200" v-if="!changeImage">
+                                <v-img width="200" :src="post.image"></v-img>
+                                <v-card-title>
+                                    Post Image
+                                </v-card-title>
+                                <v-card-actions>
+                                    <v-btn small @click="changeImage=!changeImage">
+                                        Change Image
+                                    </v-btn>
+                                </v-card-actions>
+                            </v-card>
+
+                            <template v-else>
+                                <v-file-input  accept="image/*"  v-model="image"  label="Post Image" ref="files"></v-file-input>
+                            </template>
+
+                            <p v-if="errors.image" class="red--text" v-text="errors.image">
+
+                            </p>
+                            <v-btn dark :disabled="this.disabled" class="ml-8" type="submit">
+                                Update Post
+                            </v-btn>
                         </v-form>
                     </v-container>
 
@@ -26,62 +57,75 @@
 
 <script>
 import axios from 'axios';
-import {validationMixin} from 'vuelidate';
-import {required} from 'vuelidate/lib/validators';
 import swal from 'sweetalert';
 export default {
     data(){
         return{
+            errors: {},
             post: null,
-            title: null,
-            body: null,
             image: null,
+            changeImage: false,
+            disabled: false,
         }
     },
     metaInfo: {
         title: 'Edit Post'
     },
-    mixins: [validationMixin],
-    validations: {
-        title: {required},
-        body: {required},
-        image: {required}
-    },
+
+
     methods: {
         getPost(id){
             axios.get('/post/'+id).then(res=>{
                 this.post = res.data;
-                this.title = this.post.title,
-                this.body = this.post.body
             }).catch(err=>{
                 console.log(err);
             })
+        },
+        updatePost: function(){
+            this.errors = {};
+            if(!this.post.title){
+                swal({title: 'Post Title is required', icon: 'error'})
+                this.errors.title = 'Title is required';
+            }
+
+            if(!this.post.body){
+                this.errors.body = 'Body is required';
+                swal({title: 'Body is required', icon: 'error'})
+            }
+
+            if(this.$refs.files){
+                if(!this.image){
+                    this.errors.image = "Image is required";
+                    swal({title: 'Image is required', icon: 'error'})
+                }
+            }
+
+            if(Object.keys(this.errors).length){
+                return false;
+            }
+            const id = this.$route.params.id;
+            let formData = new FormData();
+            formData.append('title', this.post.title);
+            formData.append('body', this.post.body);
+            if(this.$refs.files){
+                formData.append('image', this.$refs.files.value);
+            }
+            this.disabled = true;
+            axios.post('/post/'+this.post.id+'/edit', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(res=>{
+                this.disabled=false;
+                swal({title: 'Updated Successfully', icon: 'success'});
+                this.$router.push({name: 'edit-post', params: {id: this.post.id}});
+            }).catch(err=>{
+                this.disabled=false;
+                console.log(err.response);
+            })
         }
     },
-    computed: {
-        titleErrors(){
-            const errors = [];
-            if(!this.$v.title.$dirty) return errors;
-            !this.$v.title.required && errors.push('Title is required');
 
-            return errors;
-        },
-
-        imageErrors(){
-            const errors = [];
-            if(!this.$v.image.$dirty) return errors;
-            !this.$v.image.required && errors.push('Image is required');
-
-            return errors;
-        },
-
-        bodyErrors(){
-            const errors = [];
-            if(!this.$v.body.$dirty) return errors;
-            !this.$v.body.required && errors.push('Body is required');
-            return errors;
-        }
-    },
     mounted(){
         this.getPost(this.$route.params.id);
     },

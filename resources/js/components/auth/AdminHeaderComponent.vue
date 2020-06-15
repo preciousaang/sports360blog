@@ -57,7 +57,7 @@ export default {
             items: [
                 {text: 'Dashboard', icon: 'mdi-view-dashboard', route: {name: 'dashboard'}},
                 {text: 'Posts', icon: 'mdi-file', route: '#', children: [
-                    {text: 'Manage Posts', icon: 'mdi-file', route: '/posts'},
+                    {text: 'Manage Posts', icon: 'mdi-file', route: {name: 'manage-posts'}},
                     {text: 'Add Post', icon: 'mdi-file-plus', route: {name: 'add-post'}},
 
                 ]},

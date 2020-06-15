@@ -36,4 +36,35 @@ class PostsController extends Controller
         $post = Post::find($id);
         return response()->json(new PostResource($post));
     }
+
+    public function allPosts($opt=""){
+        $posts = Post::paginate(10);
+        return PostResource::collection($posts);
+    }
+
+    public function update(Request $request){
+        $post = Post::find($request->id);
+        $post->body = $request->body;
+        $post->title = $request->title;
+        if($request->hasFile('image')){
+            //Upload the image
+            $image_url = Cloudder::upload($request->file('image'))->getResult()['url'];
+            //Delete the old image
+            $old_img = basename($post->image);
+            $public_id = explode('.', $old_img)[0];
+            Cloudder::destroyImage($public_id);
+            Cloudder::delete($old_img);
+            //store the new url
+            $post->image = $image_url;
+        }
+
+        $post->save();
+        return response()->json($request->all());
+    }
+
+    public function delete(Request $request){
+        $post = Post::findOrFail($request->id);        
+        $post->delete();
+        return response()->json('Deleted', 200);
+    }
 }
