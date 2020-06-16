@@ -17,7 +17,20 @@ import 'tiptap-vuetify/dist/main.css';
 
 import wysiwyg from "vue-wysiwyg";
 import "vue-wysiwyg/dist/vueWysiwyg.css";
-Vue.use(wysiwyg, {});
+window.$ = window.jQuery = require('jquery');
+Vue.use(wysiwyg, {
+    image: {
+    uploadURL: "/api/upload-image",
+    dropzoneOptions: {
+        maxFilesize: 4,
+        acceptedFiles: 'image/*',        
+       headers: {
+
+           "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+       }
+    }
+  }
+});
 
 /**
  * The following block of code may be used to automatically register your

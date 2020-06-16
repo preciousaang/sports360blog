@@ -7,6 +7,12 @@
                         <v-toolbar-title>
                             Manage Posts
                         </v-toolbar-title>
+                        <v-spacer>
+
+                        </v-spacer>
+                        <v-btn light :to="{name: 'add-post'}">
+                            Add New Post
+                        </v-btn>
                     </v-app-bar>
                     <v-data-table :loading="loading" :headers="headers" :items="posts"  :server-items-length="totalPosts" :options.sync="options">
                         <template v-slot:item.actions="{item}">

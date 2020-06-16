@@ -21,7 +21,10 @@ class PostResource extends JsonResource
             'title'=> $this->title,
             'image' => $this->image,
             'created_at' => $this->created_at,
+            'slug'=>$this->slug,
             'updated_at'=>$this->updated_at,
+            'featured'=>$this->featured,
+            'published'=>$this->published,
             'user' => User::find($this->user_id),
             'category'=> Category::find($this->category_id),
             'body' => $this->body

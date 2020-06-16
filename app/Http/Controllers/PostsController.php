@@ -10,17 +10,13 @@ use JD\Cloudder\Facades\Cloudder;
 class PostsController extends Controller
 {
     public function store(Request $request){
-        $request->validate([
-            'title'=>'required',
-            'body'=>'required',
-            'image'=>'required'
-        ]);
         $image = Cloudder::upload($request->file('image'))->getResult()['url'];
         $newPost = Post::create([
-            'category_id'=>1,
+            'category_id'=>json_decode($request->category),
             'title'=>$request->title,
             'body'=>$request->body,
-            'featured'=>true,
+            'published'=>json_decode($request->published),
+            'featured'=>json_decode($request->featured),
             'user_id'=>auth()->id(),
             'image'=>$image
         ]);
@@ -37,15 +33,29 @@ class PostsController extends Controller
         return response()->json(new PostResource($post));
     }
 
+    public function getPostBySlug($slug){
+        $post = Post::where(['slug'=>$slug, 'published'=>true])->first();
+        return response()->json(new PostResource($post));
+    }
+
     public function allPosts($opt=""){
-        $posts = Post::paginate(10);
+        $posts = Post::latest()->paginate(10);
         return PostResource::collection($posts);
     }
 
     public function update(Request $request){
+        //return response()->json($request);
         $post = Post::find($request->id);
         $post->body = $request->body;
         $post->title = $request->title;
+        if(is_numeric(json_decode($request->category))){
+            $post->category_id = json_decode($request->category);
+        }else{
+            $post->category_id = (int)json_decode($request->category)->id;
+        }
+
+        $post->featured = json_decode($request->featured);
+        $post->published = json_decode($request->published);
         if($request->hasFile('image')){
             //Upload the image
             $image_url = Cloudder::upload($request->file('image'))->getResult()['url'];
@@ -63,8 +73,13 @@ class PostsController extends Controller
     }
 
     public function delete(Request $request){
-        $post = Post::findOrFail($request->id);        
+        $post = Post::findOrFail($request->id);
         $post->delete();
         return response()->json('Deleted', 200);
+    }
+
+    public function uploadImage(Request $request){
+        $file = basename($request->file('file')->store('public/uploads'));
+        return  asset('storage/uploads/'.$file);
     }
 }

@@ -15,12 +15,15 @@ class CategoriesTableSeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'title'=>'General',
+                'slug'=>'general'
             ],
             [
                 'title'=>'Football News',
+                'slug'=>'football-news'
             ],
             [
-                'title'=>'Sports Lifestyle'
+                'title'=>'Sports Lifestyle',
+                'slug'=>'sports-lifestyle'
             ]
         ]);
     }

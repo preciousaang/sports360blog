@@ -41,26 +41,26 @@ export default {
         }
     },
     methods: {
-        getPost: function(id){
-            axios.get('/post/'+id).then(res=>{
+        getPost: function(slug){
+            axios.get('/post-by-slug/'+slug).then(res=>{
                 this.post = res.data;
             }).catch(err=>{
-                console.log(err);
+                console.log(err.response);
             });
         }
     },
-    
+
     metaInfo(){
         return {
             title: this.post ? this.post.title : 'Post Not Found',
         }
     },
     mounted(){
-        this.getPost(this.$route.params.id);
+        this.getPost(this.$route.params.slug);
     },
     watch: {
         $route(to, from){
-            this.getPost(to);
+            this.getPost(to.params.slug);
         }
     }
 }

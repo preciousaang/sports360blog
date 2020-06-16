@@ -18,11 +18,13 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->unsignedBigInteger('user_id');
+            $table->text('slug');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
             $table->string('image');
+            $table->boolean('featured')->default(false);
+            $table->boolean('published');
             $table->text('body');
-            $table->boolean('featured');
             $table->unsignedBigInteger('views')->default(0);
             $table->timestamps();
         });
