@@ -9,8 +9,11 @@
 import HeaderComponent from './HeaderComponent';
 export default {
     components: {
-        'header-component': HeaderComponent,        
+        'header-component': HeaderComponent,
     },
+    metaInfo: {
+        title: 'Page Not Found',
+    }
 }
 </script>
 

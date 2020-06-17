@@ -2,14 +2,14 @@
     <div>
         <v-toolbar>
             <v-toolbar-items>
-                <router-link :to="{name: 'homepage'}">
+                <router-link :to="{name: 'homepage'}" exact>
                     <v-img class="logo" :src="require('./logo.png')" contain></v-img>
                 </router-link>
             </v-toolbar-items>
             <v-spacer></v-spacer>
 
             <v-toolbar-items class="d-none d-lg-block">
-                <v-btn dense v-for="item in items" :key="item.text" :to="item.route">
+                <v-btn dense v-for="item in items" :key="item.text" :to="item.route" exact>
                     {{item.text}}
                 </v-btn>
             </v-toolbar-items>

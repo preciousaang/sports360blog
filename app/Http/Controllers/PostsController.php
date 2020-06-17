@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 use App\Http\Resources\PostResource;
 use JD\Cloudder\Facades\Cloudder;
 
@@ -38,8 +39,14 @@ class PostsController extends Controller
         return response()->json(new PostResource($post));
     }
 
+    public function getPostsByCategorySlug($slug){
+        $category = Category::where(['slug'=>$slug])->first();
+        $posts = $category->posts()->wherePublished(true)->paginate(25);
+        return PostResource::collection($posts);
+    }
+
     public function allPosts($opt=""){
-        $posts = Post::latest()->paginate(10);
+        $posts = Post::latest()->paginate(1);
         return PostResource::collection($posts);
     }
 

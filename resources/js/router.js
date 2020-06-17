@@ -5,6 +5,7 @@ import DashboardComponent from './components/auth/DashboardComponent';
 import NotFoundComponent from './components/NotFoundComponent';
 import AddPostComponent from './components/auth/AddPostComponent';
 import HomeComponent from './components/HomeComponent';
+import FootballNewsComponent from './components/FootballNewsComponent';
 import SinglePost from './components/posts/SinglePost';
 import AdminComponent from './components/auth/AdminComponent';
 import EditPostComponent from './components/auth/EditPostComponent'
@@ -30,6 +31,7 @@ const routes = [
             }
         });
     }},
+    {path: '/football-news', component: FootballNewsComponent, name: 'football-news'},
     {path: '/post/:slug', component: SinglePost, name: 'single-post'},
     {path: '/admin', component: AdminComponent, children: [
         {path: '', component: DashboardComponent, name: 'dashboard'},

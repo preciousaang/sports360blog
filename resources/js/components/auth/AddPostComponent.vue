@@ -13,7 +13,7 @@
                     <v-container>
                         <v-form @submit.prevent="addPost()">
                             <v-text-field :error-messages="titleErrors" @input="$v.title.$touch()" @blur="$v.title.$touch()" v-model="title" label="Post Title"></v-text-field>
-                            <v-select :error-messages="categoryErrors"  v-model="post.category" item-text="title" item-value="id" label="Category" :items="categories">
+                            <v-select :error-messages="categoryErrors"  v-model="category" item-text="title" item-value="id" label="Category" :items="categories">
                             </v-select>
                             <br />
                             <wysiwyg  placeholder="Post Body"  @input="$v.body.$touch()" @blur="$v.body.$touch()" v-model="body" label="Post Body"></wysiwyg>
@@ -75,7 +75,7 @@ export default {
         categoryErrors(){
             const errors = [];
             if(!this.$v.category.$dirty) return errors;
-            !this.$v.category.required && errors.push('Caetgory is required');
+            !this.$v.category.required && errors.push('Category is required');
             return errors;
         },
 

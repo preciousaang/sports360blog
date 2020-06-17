@@ -23,6 +23,7 @@ Route::post('logout', 'Users\LoginController@logout');
 Route::post('add-post', 'PostsController@store')->middleware('auth:sanctum');
 Route::get('posts', 'PostsController@list');
 Route::get('all-posts/{opt?}', 'PostsController@allPosts');
+Route::get('posts-by-category/{slug}', 'PostsController@getPostsByCategorySlug');
 Route::get('post/{id}', 'PostsController@single');
 Route::get('post-by-slug/{slug}', 'PostsController@getPostBySlug');
 Route::get('categories', 'CategoriesController@list');
