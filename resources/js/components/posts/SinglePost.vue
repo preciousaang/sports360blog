@@ -15,12 +15,33 @@
                     </div>
                     <v-card>
                         <v-img :src="post.image"></v-img>
-                        <v-divider class="mb-5"></v-divider>
-                        <v-card-text v-html="post.body"></v-card-text>
+                        <v-divider class="mt-3 mb-5"></v-divider>
+                        <v-card-subtitle class="px-5 post-body text-subtitle-1"  v-html="post.body">
+
+                        </v-card-subtitle>
                     </v-card>
                 </v-col>
                 <v-col cols="12" xs="12" md="4" sm="12" lg="4">
-                    <h4>dd</h4>
+                    <h2>Related Posts</h2>
+                    <v-divider class="mb-2"></v-divider>
+                    <template v-if="relatedPosts.length" v-for="relatedPost in relatedPosts">
+                        <v-row no-gutters>
+                            <v-col cols="4">
+                                <v-img height="100%" :src="relatedPost.image"></v-img>
+                            </v-col>
+                            <v-col cols="8">
+                                <v-card :to="{name: 'single-post', params: {slug: relatedPost.slug}}" style="border-radius-top-left: 0; border-radius-bottom-left: 0;" height="100%">
+                                    <h3 class="px-2">{{relatedPost.title}}</h3>
+                                    <v-divider></v-divider>
+                                    <v-card-subtitle>Published {{relatedPost.created_at|moment('from')}}</v-card-subtitle>
+                                </v-card>
+                            </v-col>
+                        </v-row>
+                        <v-divider class="mb-2 mt-2">
+
+                        </v-divider>
+                    </template>
+
                 </v-col>
             </v-row>
         </v-container>
@@ -38,16 +59,29 @@ export default {
     data(){
         return {
             post: null,
+            relatedPosts: [],
         }
     },
     methods: {
         getPost: function(slug){
             axios.get('/post-by-slug/'+slug).then(res=>{
                 this.post = res.data;
+                this.getPostsByCategorySlug(this.post);
             }).catch(err=>{
                 console.log(err.response);
             });
-        }
+        },
+
+        getPostsByCategorySlug(post){
+            this.posts = [];
+            axios.get('/posts-by-category/'+post.category.slug+'?limit=5').then(res=>{
+                this.relatedPosts = res.data.data.filter(item=>{
+                    return item.id !== post.id;
+                });
+            }).catch(err=>{
+                console.log(err.response);
+            });
+        },
     },
 
     metaInfo(){
@@ -67,4 +101,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
+    .post-body{
+        font-family: serif;
+        font-size: 125%;
+    }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <header-component></header-component>
+        <header-component></header-component>        
         <div class="text-center mt-2">
             <h2>Football News</h2>
             <v-divider></v-divider>
@@ -13,7 +13,8 @@
 
                     </post-card>
                     <div class="text-center">
-                        <v-pagination v-model="page" :length="totalPosts">
+                        <v-divider></v-divider>
+                        <v-pagination v-model="page" :length="totalPages">
                         </v-pagination>
                     </div>
                 </v-col>
@@ -36,7 +37,7 @@ export default {
             page: 1,
             loading: true,
             posts: [],
-            totalPosts: 0,
+            totalPages: 0,
         }
     },
     components: {
@@ -45,13 +46,12 @@ export default {
     },
     methods: {
         getPostsByCategorySlug(slug){
+            this.posts = [];
             axios.get('/posts-by-category/'+slug+'?page='+this.page).then(res=>{
-                this.loading=false;
                 this.posts = res.data.data;
-                this.totalPosts = res.data.meta.last_page;
+                this.totalPages = res.data.meta.last_page;
                 console.log(res);
             }).catch(err=>{
-                this.loading=false;
                 console.log(err.response);
             });
         },

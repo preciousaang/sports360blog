@@ -51,7 +51,7 @@ const routes = [
             }
         })
     }},
-    {path: '**', component: NotFoundComponent}
+    {path: '**', component: NotFoundComponent, name: 'page-not-found'}
 
 ]
 
