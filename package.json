@@ -11,6 +11,8 @@
     "postinstall": "npm run prod"
   },
   "dependencies": {
+    "laravel-echo": "^1.8.0",
+    "pusher-js": "^6.0.3",
     "sweetalert": "^2.1.2",
     "tiptap-vuetify": "^2.23.0",
     "vue-meta": "^2.4.0",
