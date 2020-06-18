@@ -18,6 +18,30 @@ export default {
 
         }
     },
+    methods: {
+        listenForChanges(){
+            Echo.channel('betpro360').listen('PostCreated', post=>{                
+                if(!('Notification' in window)){
+                    alert('Web Notification is not supported');
+                    return;
+                }
+
+                Notification.requestPermission(permission=>{
+                    let notification = new Notification('Betpro360', {
+                        body: post.title,
+                        icon: post.image
+                    });
+
+                    notification.onclick = () => {
+                        this.$router.push({name: 'single-post', params: {slug: post.slug}});
+                    }
+                })
+            });
+        },
+    },
+    created(){
+        this.listenForChanges();
+    },
     metaInfo: {
         titleTemplate: '%s | Betpro 360 Blog',
     }

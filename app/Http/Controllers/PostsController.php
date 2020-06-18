@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use App\Http\Resources\PostResource;
 use JD\Cloudder\Facades\Cloudder;
+use App\Events\PostCreated;
 
 class PostsController extends Controller
 {
@@ -21,6 +22,7 @@ class PostsController extends Controller
             'user_id'=>auth()->id(),
             'image'=>$image
         ]);
+        event(new PostCreated($newPost));
         return response()->json($newPost, 200);
     }
 

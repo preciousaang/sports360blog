@@ -8,8 +8,15 @@
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link rel="icon" @if(config('app.debug')) href="{{asset('images/logo.png')}}" @else href="{{secure_asset('images/logo.png')}}" @endif>
         <meta name="csrf-token" content="{{ csrf_token() }}">
+                <!-- Scripts -->
+          <script>
+            window.Laravel = {!! json_encode([
+              'csrfToken' => csrf_token(),
+            ]) !!};
+          </script>
     </head>
     <body>
+
 
 
     <div id="app">
@@ -19,7 +26,7 @@
     <script src="{{asset('js/app.js')}}"></script>
     @else
     <script src="{{secure_asset('js/app.js')}}"></script>
-    @endif    
+    @endif
 
     </body>
 </html>
