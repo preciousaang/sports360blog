@@ -20,9 +20,9 @@ export default {
     },
     methods: {
         listenForChanges(){
-            Echo.channel('betpro360').listen('PostCreated', post=>{                
+            Echo.channel('betpro360').listen('PostCreated', post=>{
                 if(!('Notification' in window)){
-                    alert('Web Notification is not supported');
+                    console.log('Web Notification not supported on this browser');
                     return;
                 }
 
