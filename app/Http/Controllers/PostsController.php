@@ -103,4 +103,17 @@ class PostsController extends Controller
         $file = basename($request->file('file')->store('public/uploads'));
         return  asset('storage/uploads/'.$file);
     }
+
+    public function popularPosts($category=""){
+        if($category){
+            $category = Category::where('slug', $category)->first();
+            if($category){
+                $posts = $category->posts()->orderBy('views', 'desc')->limit(10)->get();
+            }
+        }else{
+            $posts = Post::orderBy('views', 'desc')->limit(10)->get();
+        }
+
+        return response()->json($posts);
+    }
 }
