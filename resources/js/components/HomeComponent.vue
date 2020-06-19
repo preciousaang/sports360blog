@@ -8,7 +8,7 @@
                     <post-card v-for="post of posts" :key="post.id" :post="post"></post-card>
                 </v-col>
                 <v-col cols="12" xs="12" sm="12" lg="4">
-                    <h2 class="text-center">Popular Posts</h2>
+                    <h2 class="text-center">Trending</h2>
                     <v-divider class="mb-2"></v-divider>
                     <template v-if="popularPosts.length" v-for="popPost in popularPosts">
                         <v-row no-gutters>
