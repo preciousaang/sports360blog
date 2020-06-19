@@ -39,6 +39,8 @@ class PostsController extends Controller
     public function getPostBySlug($slug){
         $post = Post::where(['slug'=>$slug, 'published'=>true])->where('created_at', '<', date('Y-m-d H:i:s', time()))->first();
         if($post){
+            $post->views++;
+            $post->save();
             return response()->json(new PostResource($post));
         }else{
             return response()->json(['message'=>'Post Not Found'], 404);
@@ -48,11 +50,13 @@ class PostsController extends Controller
 
     public function getPostsByCategorySlug(Request $request, $slug){
         $category = Category::whereSlug($slug)->first();
-        $posts = $category->posts()->wherePublished(true)->where('created_at', '<', date('Y-m-d H:i:s', time()))->latest()->paginate(15);
-        if($request->has('limit')){
-            $posts = $category->posts()->wherePublished(true)->where('created_at', '<', date('Y-m-d H:i:s', time()))->latest()->limit(5)->get();
+        if($category){
+            $posts = $category->posts()->wherePublished(true)->where('created_at', '<', date('Y-m-d H:i:s', time()))->latest()->paginate(15);
+            if($request->has('limit')){
+                $posts = $category->posts()->wherePublished(true)->where('created_at', '<', date('Y-m-d H:i:s', time()))->latest()->limit(5)->get();
+            }
+            return PostResource::collection($posts);
         }
-        return PostResource::collection($posts);
     }
 
     public function allPosts($opt=""){

@@ -65,14 +65,14 @@
                         <v-list-item-title v-text="item.text"></v-list-item-title>
                       </v-list-item-content>
                     </template>
-                    <v-list-item :href="child.route" v-for="child in item.children" :key="child.text">                        
+                    <v-list-item :href="child.route" v-for="child in item.children" :key="child.text">
                         <v-list-item-content>
                             <v-list-item-title v-text="child.text">
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                 </v-list-group>
-            </template>            
+            </template>
         </v-list>
         </v-navigation-drawer>
     </div>
@@ -85,8 +85,8 @@ export default {
             items: [
                 {text: 'Home', route: {name: 'homepage'}, icon: 'mdi-home'},
                 {text: 'Football News', route: '/football-news', icon: 'mdi-newspaper'},
-                {text: 'Sports Lifestyle', route: '/sports-liftstyle', icon: 'mdi-tshirt-crew-outline'},
-                {text: 'Match Previews', route: '/sports-previews', icon: 'mdi-microscope'},
+                {text: 'Sports Lifestyle', route: '/sports-lifestyle', icon: 'mdi-tshirt-crew-outline'},
+                {text: 'Match Previews', route: '/match-previews', icon: 'mdi-microscope'},
                 {text: 'League Table', route: '#', icon: 'mdi-table', children: [
                     {text: 'Champions League', route: '/champions-league-table', icon: 'mdi-ball'},
                     {text: 'Premier League', route: '/premier-league-table', icon: 'mdi-ball'},

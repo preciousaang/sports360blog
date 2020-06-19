@@ -5,7 +5,7 @@ import DashboardComponent from './components/auth/DashboardComponent';
 import NotFoundComponent from './components/NotFoundComponent';
 import AddPostComponent from './components/auth/AddPostComponent';
 import HomeComponent from './components/HomeComponent';
-import FootballNewsComponent from './components/FootballNewsComponent';
+import CategoryPostList from './components/CategoryPostList';
 import SinglePost from './components/posts/SinglePost';
 import AdminComponent from './components/auth/AdminComponent';
 import EditPostComponent from './components/auth/EditPostComponent'
@@ -43,7 +43,9 @@ const routes = [
             }
         });
     }},
-    {path: '/football-news', component: FootballNewsComponent, name: 'football-news'},
+    {path: '/football-news', component: CategoryPostList, name: 'football-news'},
+    {path: '/sports-lifestyle', component: CategoryPostList, name: 'sports-lifestyle'},
+    {path: '/match-previews', component: CategoryPostList, name: 'match-previews'},
     {path: '/champions-league-table', component: ChampionsLeague, name: 'champions-league'},
     {path: '/premier-league-table', component: PremierLeague, name: 'premier-league'},
     {path: '/bundesliga-table', component: Bundesliga, name: 'bundesliga'},

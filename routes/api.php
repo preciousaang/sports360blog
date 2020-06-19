@@ -28,6 +28,7 @@ Route::get('posts-by-category/{slug}', 'PostsController@getPostsByCategorySlug')
 Route::get('post/{id}', 'PostsController@single');
 Route::get('post-by-slug/{slug}', 'PostsController@getPostBySlug');
 Route::get('categories', 'CategoriesController@list');
+Route::get('popular-posts', 'PostsController@popularPosts');
 Route::get('/all-categories', 'CategoriesController@allCategrories');
 Route::get('category/{id?}', 'CategoriesController@getCategory');
 Route::put('category/{id}', 'CategoriesController@editCategory')->middleware('auth:sanctum');
