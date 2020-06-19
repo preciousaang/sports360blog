@@ -69,7 +69,7 @@ Vue.use(Vuelidate);
 
 
 export default {
-    maixins: [validationMixin],
+    mixins: [validationMixin],
     validations: {
         title: {
                required,

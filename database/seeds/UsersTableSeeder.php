@@ -18,7 +18,14 @@ class UsersTableSeeder extends Seeder
                 'username'=>'preciousaang',
                 'email'=>'preciousaang@gmail.com',
                 'password'=>bcrypt('albert'),
-                'role_id'=>1,                
+                'role_id'=>1,
+            ],
+            [
+                'name'=>'Bet Pro 360',
+                'username'=>'admin',
+                'password'=>bcrypt('admin'),
+                'email'=>'admin@bet360pro.com',
+                'role_id'=>1
             ]
         ]);
     }

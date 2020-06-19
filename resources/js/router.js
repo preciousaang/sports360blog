@@ -10,7 +10,10 @@ import SinglePost from './components/posts/SinglePost';
 import AdminComponent from './components/auth/AdminComponent';
 import EditPostComponent from './components/auth/EditPostComponent'
 import ManagePostsComponent from './components/auth/ManagePostsComponent'
+import AddUserComponent from './components/auth/AddUserComponent'
 import CategoriesComponent from './components/auth/CategoriesComponent'
+import ManageUsersComponent from './components/auth/ManageUsersComponent'
+import EditUserComponent from './components/auth/EditUserComponent'
 
 import swal from 'sweetalert';
 
@@ -38,8 +41,12 @@ const routes = [
         {path: 'add-post', component: AddPostComponent, name: 'add-post'},
         {path: 'edit-post/:id', component: EditPostComponent, name: 'edit-post'},
         {path: 'manage-posts', component: ManagePostsComponent, name: 'manage-posts'},
+        {path: 'add-user', component: AddUserComponent, name: 'add-user'},
+        {path: 'manage-users', component: ManageUsersComponent, name: 'manage-users'},
+        {path: 'edit-user/:id', component: EditUserComponent, name: 'edit-user'},
         {path: 'manage-categories', component: CategoriesComponent, name: 'manage-categories'},
         {path: 'edit-category/:id', component: CategoriesComponent, name: 'edit-category'},
+
 
     ], beforeEnter: (to, from, next)=>{
         user.isLoggedIn(res=>{

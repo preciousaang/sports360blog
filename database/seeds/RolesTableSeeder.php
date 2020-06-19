@@ -19,17 +19,9 @@ class RolesTableSeeder extends Seeder
                 'full_name'=>'Administrator'
             ],
             [
-                'title'=>'editor',
-                'full_name'=>'Editor'
-            ],
-            [
                 'title'=>'author',
                 'full_name'=>'Author'
-            ],
-            [
-                'title'=>'subscriber',
-                'full_name'=>'Subscriber'
-            ]
+            ],            
         ]);
     }
 }
