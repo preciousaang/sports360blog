@@ -30,8 +30,17 @@ export default {
             loading: true,
         }
     },
-    metaInfo: {
-        title: 'Welcome',        
+    metaInfo(){
+        return {
+            title: 'Latest Sports News Around The Globe',
+            meta: [
+                {
+                    vmid: 'description',
+                    name: 'description',
+                    content: 'Betpro360 blog gives the latest sports news from around the globe... breaking news, sports lifestyle, rumours, transfers, league table standings, detailed match analysis and free betting tips.'
+                }
+            ]
+        }
     },
     methods: {
         getPosts: function(){

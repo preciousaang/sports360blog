@@ -9,9 +9,35 @@
             <v-spacer></v-spacer>
 
             <v-toolbar-items class="d-none d-lg-block">
-                <v-btn dense v-for="item in items" :key="item.text" :to="item.route" exact>
-                    {{item.text}}
-                </v-btn>
+                <template v-for="item in items">
+                    <v-btn v-if="!item.children" text :to="item.route" exact>
+                        {{item.text}}
+                    </v-btn>
+                     <v-menu v-else offset-y>
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                              v-bind="attrs"
+                              v-on="on"
+                              exact
+                            >
+                              {{item.text}}<v-icon class="ml-auto">
+                                  mdi-menu-down
+                              </v-icon>
+                            </v-btn>
+                          </template>
+                          <v-list>
+                            <v-list-item
+                              v-for="(child, index) in item.children"
+                              :href="child.route"
+                              :key="index"
+                              @click=""
+                            >
+                              <v-list-item-title>{{ child.text }}</v-list-item-title>
+                            </v-list-item>
+                          </v-list>
+                        </v-menu>
+                </template>
+
                 <v-btn target="_blank" href="https://betpro360.com" exact>
                     Betpro360
                 </v-btn>
@@ -24,29 +50,30 @@
         <v-navigation-drawer absolute temporary v-model="drawer">
             <v-img class="logo" height="50" :src="require('./logo.png')" contain></v-img>
             <v-divider></v-divider>
-            <v-list nav dense>
-                <v-list-item-group>
-                    <v-list-item :to="item.route" v-for="item in items" :key="item.text">
-                        <v-list-item-icon>
-                            <v-icon v-text="item.icon"></v-icon>
-                        </v-list-item-icon>
+            <v-list nav dense flat>
+            <template v-for="item in items">
+                <v-list-item v-if="!item.children" link :to="item.route">
+                    <v-list-item-icon>
+                        <v-icon v-text="item.icon"></v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title v-text="item.text">
+                    </v-list-item-title>
+                </v-list-item>
+                <v-list-group :prepend-icon="item.icon" v-else no-action>
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item.text"></v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item :href="child.route" v-for="child in item.children" :key="child.text">                        
                         <v-list-item-content>
-                            <v-list-item-title v-text="item.text"></v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                    <v-list-item target="_blank" href="https://www.betpro360.com">
-                        <v-list-item-icon>
-                            <v-icon>mdi-ball</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content>
-                            <v-list-item-title>
-                                Betpro360
+                            <v-list-item-title v-text="child.text">
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
-                </v-list-item-group>
-
-            </v-list>
+                </v-list-group>
+            </template>            
+        </v-list>
         </v-navigation-drawer>
     </div>
 </template>
@@ -60,6 +87,14 @@ export default {
                 {text: 'Football News', route: '/football-news', icon: 'mdi-newspaper'},
                 {text: 'Sports Lifestyle', route: '/sports-liftstyle', icon: 'mdi-tshirt-crew-outline'},
                 {text: 'Match Previews', route: '/sports-previews', icon: 'mdi-microscope'},
+                {text: 'League Table', route: '#', icon: 'mdi-table', children: [
+                    {text: 'Champions League', route: '/champions-league-table', icon: 'mdi-ball'},
+                    {text: 'Premier League', route: '/premier-league-table', icon: 'mdi-ball'},
+                    {text: 'Serie A', route: '/serie-a-table', icon: 'mdi-ball'},
+                    {text: 'LA Liga', route: '/la-liga-table', icon: 'mdi-ball'},
+                    {text: 'Bundesliga', route: '/bundesliga-table', icon: 'mdi-ball'},
+                    {text: 'League 1', route: '/league-1-table', icon: 'mdi-ball'},
+                ]},
                 {text: 'About Us', route: {name: 'about-us'}, icon: 'mdi-account-group'}
             ],
             drawer: false,

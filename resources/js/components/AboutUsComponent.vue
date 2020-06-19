@@ -73,7 +73,12 @@ export default {
                 {
                     vmid: 'description',
                     name: 'description',
-                    content: ''
+                    content: 'At BetPro360, we are here to offer you the best platform to successfully turn your passion for the game into a money-making activity. FREE offers for you even before signing up with us. You have access to certain predictions for just visiting our site - cool deal.'
+                },
+                {
+                    vmid: 'author',
+                    name: 'author',
+                    content: 'Betpro360'
                 }
             ],
         }

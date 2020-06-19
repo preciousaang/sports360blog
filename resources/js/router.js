@@ -16,6 +16,12 @@ import ManageUsersComponent from './components/auth/ManageUsersComponent'
 import EditUserComponent from './components/auth/EditUserComponent'
 import ProfileComponent from './components/auth/ProfileComponent'
 import AboutUsComponent from './components/AboutUsComponent'
+import ChampionsLeague from './components/ChampionsLeague'
+import PremierLeague from './components/PremierLeague'
+import Bundesliga from './components/Bundesliga'
+import SerieA from './components/SerieA'
+import LaLiga from './components/LaLiga'
+import LeagueOne from './components/LeagueOne'
 
 import swal from 'sweetalert';
 
@@ -38,6 +44,12 @@ const routes = [
         });
     }},
     {path: '/football-news', component: FootballNewsComponent, name: 'football-news'},
+    {path: '/champions-league-table', component: ChampionsLeague, name: 'champions-league'},
+    {path: '/premier-league-table', component: PremierLeague, name: 'premier-league'},
+    {path: '/bundesliga-table', component: Bundesliga, name: 'bundesliga'},
+    {path: '/serie-a-table', component: SerieA, name: 'serie-a'},
+    {path: '/la-liga-table', component: LaLiga, name: 'la-liga'},
+    {path: '/league-1-table', component: LeagueOne, name: 'league-1'},
     {path: '/post/:slug', component: SinglePost, name: 'single-post'},
     {path: '/admin', component: AdminComponent, children: [
         {path: '', component: DashboardComponent, name: 'dashboard'},

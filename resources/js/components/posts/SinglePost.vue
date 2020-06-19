@@ -87,6 +87,17 @@ export default {
     metaInfo(){
         return {
             title: this.post ? this.post.title : 'Post Not Found',
+            meta: [
+                {
+                    vmid: 'description',
+                    name: 'description',
+                    content: this.post ? this.post.body.substring(0, 100) : ''
+                },
+                {
+                    name: 'author',
+                    content: this.post ? this.post.user.name : 'Betpro360'
+                }
+            ]
         }
     },
     mounted(){
