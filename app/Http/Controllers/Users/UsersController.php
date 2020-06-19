@@ -63,8 +63,7 @@ class UsersController extends Controller
     }
 
     public function allUsers(Request $request){
-        $users = User::orderBy('name')->paginate($request->get('per_page'));
-
+        $users = User::where('id', '<>', auth()->id())->orderBy('name')->paginate($request->get('per_page'));
         return response()->json($users);
     }
 
@@ -83,6 +82,16 @@ class UsersController extends Controller
         }
         $user->save();
         return response()->json($user);
+    }
+
+    public function delete($id){
+        $user = User::find($id);
+        $user->delete();
+        return response()->json('Ok');
+    }
+
+    public function getAuthUser(){
+        return response()->json(auth()->user());
     }
 
 

@@ -72,6 +72,16 @@ export default {
                 console.log(err.response);
             })
         },
+        deleteUser(user){
+            if(!confirm('Are you sure?')) return false;
+            axios.delete('/user/'+user.id).then(res=>{
+                swal({title: 'User Deleted', icon: 'info'});
+                this.usersCount--;
+                this.users.splice(user, 1);
+            });
+
+            console.log(user);
+        },
         updatePage(event){
             this.getUsers(event, this.options.itemsPerPage)
         },

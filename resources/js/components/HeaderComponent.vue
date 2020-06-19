@@ -12,6 +12,9 @@
                 <v-btn dense v-for="item in items" :key="item.text" :to="item.route" exact>
                     {{item.text}}
                 </v-btn>
+                <v-btn target="_blank" href="https://betpro360.com" exact>
+                    Betpro360
+                </v-btn>
             </v-toolbar-items>
             <v-btn icon>
                 <v-icon>mdi-magnify</v-icon>
@@ -31,6 +34,16 @@
                             <v-list-item-title v-text="item.text"></v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
+                    <v-list-item target="_blank" href="https://www.betpro360.com">
+                        <v-list-item-icon>
+                            <v-icon>mdi-ball</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                Betpro360
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
                 </v-list-item-group>
 
             </v-list>
@@ -47,7 +60,7 @@ export default {
                 {text: 'Football News', route: '/football-news', icon: 'mdi-newspaper'},
                 {text: 'Sports Lifestyle', route: '/sports-liftstyle', icon: 'mdi-tshirt-crew-outline'},
                 {text: 'Match Previews', route: '/sports-previews', icon: 'mdi-microscope'},
-                {text: 'About Us', route: '/about-us', icon: 'mdi-account-group'}
+                {text: 'About Us', route: {name: 'about-us'}, icon: 'mdi-account-group'}
             ],
             drawer: false,
         }

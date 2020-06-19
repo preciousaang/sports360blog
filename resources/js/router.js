@@ -14,6 +14,8 @@ import AddUserComponent from './components/auth/AddUserComponent'
 import CategoriesComponent from './components/auth/CategoriesComponent'
 import ManageUsersComponent from './components/auth/ManageUsersComponent'
 import EditUserComponent from './components/auth/EditUserComponent'
+import ProfileComponent from './components/auth/ProfileComponent'
+import AboutUsComponent from './components/AboutUsComponent'
 
 import swal from 'sweetalert';
 
@@ -25,6 +27,7 @@ import user from './mixins/user';
 
 const routes = [
     {path: '/', component: HomeComponent, name: 'homepage'},
+    {path: '/about-us', component: AboutUsComponent, name: 'about-us'},
     {path: '/login', component: LoginComponent, name: 'login', beforeEnter: (to, from , next)=>{
         user.isLoggedIn(res=>{
             if(res){
@@ -46,6 +49,7 @@ const routes = [
         {path: 'edit-user/:id', component: EditUserComponent, name: 'edit-user'},
         {path: 'manage-categories', component: CategoriesComponent, name: 'manage-categories'},
         {path: 'edit-category/:id', component: CategoriesComponent, name: 'edit-category'},
+        {path: 'profile', component: ProfileComponent, name: 'profile'},
 
 
     ], beforeEnter: (to, from, next)=>{

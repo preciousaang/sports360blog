@@ -65,6 +65,7 @@ export default {
                 {text: 'Users', icon: 'mdi-account-settings', route: '#', children: [
                     {text: 'Add User', icon: 'mdi-account-plus', route: {name: 'add-user'}},
                     {text: 'Manage Users', icon: 'mdi-account-details', route: {name: 'manage-users'}},
+                    {text: 'Update Account', icon: 'mdi-account', route: {name: 'profile'}},
                     {text: 'Subscribers', icon: 'mdi-email-newsletter', route: {name: 'subscribers'}}
                 ]},
             ]

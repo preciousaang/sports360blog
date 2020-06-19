@@ -41,6 +41,7 @@ Route::post('upload-image', 'PostsController@uploadImage')->middleware('auth:san
 Route::get('all-roles', 'RolesController@getRoles')->middleware('auth:sanctum');
 
 Route::namespace('Users')->group(function(){
+    Route::get('auth-user', 'UsersController@getAuthUser')->middleware('auth:sanctum');
     Route::get('user-by-username/{username}', 'UsersController@getUserByUsername');
     Route::post('user-by-username', 'UsersController@getUserByUsername');
     Route::get('user-by-email/{email}', 'UsersController@getUserByEmail');
@@ -50,4 +51,5 @@ Route::namespace('Users')->group(function(){
     Route::get('users-list', 'UsersController@allUsers')->middleware('auth:sanctum');
     Route::get('/user/{id}', 'UsersController@getUserById')->middleware('auth:sanctum');
     Route::put('/user/{id}', 'UsersController@update')->middleware('auth:sanctum');
+    Route::delete('/user/{id}', 'UsersController@delete')->middleware('auth:sanctum');
 });
