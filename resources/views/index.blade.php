@@ -26,6 +26,7 @@
               'csrfToken' => csrf_token(),
             ]) !!};
           </script>
+          <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5eee41b6a922da001296fa2a&product=inline-share-buttons&cms=website' async='async'></script>
     </head>
     <body>
 
