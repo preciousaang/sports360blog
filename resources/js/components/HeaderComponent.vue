@@ -42,9 +42,9 @@
                     Betpro360
                 </v-btn>
             </v-toolbar-items>
-            <v-btn icon>
+            <!-- <v-btn icon>
                 <v-icon>mdi-magnify</v-icon>
-            </v-btn>
+            </v-btn> -->
             <v-app-bar-nav-icon @click="drawer = !drawer" class="d-lg-none d-xl-flex"></v-app-bar-nav-icon>
         </v-toolbar>
         <v-navigation-drawer absolute temporary v-model="drawer">

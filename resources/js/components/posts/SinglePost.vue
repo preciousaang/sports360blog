@@ -2,6 +2,7 @@
     <div>
         <header-component></header-component>
         <v-container v-if="post">
+
             <v-row>
                 <v-col cols="12" xs="12" md="8" sm="12" lg="8">
                     <h1 class="mb-3">{{post.title}}</h1>
@@ -15,10 +16,25 @@
                     </div>
                     <v-card>
                         <v-img :src="post.image"></v-img>
+                        <v-divider class="mt-3 mb-5">
+                        </v-divider>
+                        <v-container>
+                            <v-btn :href="fbShareLink" fab color="#4267b2" dark>
+                                <v-icon large>
+                                    mdi-facebook
+                                </v-icon>
+                            </v-btn>
+                            <v-btn fab color="#38A1F3" dark>
+                                <v-icon large>
+                                    mdi-twitter
+                                </v-icon>
+                            </v-btn>
+                            <h4>Share</h4>
+                        </v-container>
                         <v-divider class="mt-3 mb-5"></v-divider>
-                        <v-card-subtitle class="px-5 post-body text-subtitle-1"  v-html="post.body">
+                        <v-card-text class="px-5 post-body text-subtitle-1"  v-html="post.body">
 
-                        </v-card-subtitle>
+                        </v-card-text>
                     </v-card>
                 </v-col>
                 <v-col cols="12" xs="12" md="4" sm="12" lg="4">
@@ -72,6 +88,8 @@ export default {
             });
         },
 
+
+
         getPostsByCategorySlug(post){
             this.posts = [];
             axios.get('/posts-by-category/'+post.category.slug+'?limit=5').then(res=>{
@@ -84,10 +102,13 @@ export default {
         },
     },
 
-    makeShareLink: function(){
-        let baseURL = window.location.origin;
-        let fullPath = baseURL+this.$route.path;
-        console.log(fullPath);
+    computed: {
+        fbShareLink: function(){
+            let baseURL = window.location.origin;
+            let fullPath = "https://bet360pro.herokuapp.com/"//baseURL+this.$route.path;
+            let link = "https://web.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u="+encodeURI(fullPath)+"&display=popup&ref=plugin&src=share_button";
+            return link;
+        },
     },
 
     metaInfo(){
@@ -102,13 +123,28 @@ export default {
                 {
                     name: 'author',
                     content: this.post ? this.post.user.name : 'Betpro360'
+                },
+                {
+                    property: 'og:url',
+                    content: this.post ? (window.location.origin) + this.$route.path : ''
+                },
+                {
+                    property: 'og:type',
+                    content: 'article',
+                },
+                {
+                    property: 'og:title',
+                    content: this.post ? this.post.title : 'Post Not Found',
+                },
+                {
+                    property: 'og:description',
+                    content: this.post ? this.post.body.substring(0, 100) : ''
                 }
             ]
         }
     },
     mounted(){
         this.getPost(this.$route.params.slug);
-        this.makeShareLink();
     },
     watch: {
         $route(to, from){
@@ -121,6 +157,7 @@ export default {
 <style lang="css" scoped>
     .post-body{
         font-family: serif;
-        font-size: 125%;
+        color: black;
+        font-size: 135%;
     }
 </style>
