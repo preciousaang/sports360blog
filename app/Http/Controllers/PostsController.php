@@ -27,7 +27,7 @@ class PostsController extends Controller
     }
 
     public function list(){
-        $posts = Post::latest()->where('created_at', '<', date('Y-m-d H:i:s', time()))->get();
+        $posts = Post::latest()->get();
         return PostResource::collection($posts);
     }
 
@@ -51,9 +51,9 @@ class PostsController extends Controller
     public function getPostsByCategorySlug(Request $request, $slug){
         $category = Category::whereSlug($slug)->first();
         if($category){
-            $posts = $category->posts()->wherePublished(true)->where('created_at', '<', date('Y-m-d H:i:s', time()))->latest()->paginate(15);
+            $posts = $category->posts()->wherePublished(true)->latest()->paginate(15);
             if($request->has('limit')){
-                $posts = $category->posts()->wherePublished(true)->where('created_at', '<', date('Y-m-d H:i:s', time()))->latest()->limit(5)->get();
+                $posts = $category->posts()->wherePublished(true)->latest()->limit(5)->get();
             }
             return PostResource::collection($posts);
         }
@@ -108,10 +108,10 @@ class PostsController extends Controller
         if($category){
             $category = Category::where('slug', $category)->first();
             if($category){
-                $posts = $category->posts()->orderBy('views', 'desc')->limit(10)->get();
+                $posts = $category->posts()->wherePublished(true)->orderBy('views', 'desc')->limit(10)->get();
             }
         }else{
-            $posts = Post::orderBy('views', 'desc')->limit(10)->get();
+            $posts = Post::wherePublished(true)->orderBy('views', 'desc')->limit(10)->get();
         }
 
         return response()->json($posts);
