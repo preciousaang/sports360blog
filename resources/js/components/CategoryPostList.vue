@@ -79,7 +79,7 @@ export default {
                     this.totalPages = res.data.meta.last_page;
                 }
                 this.skeleton = false;
-                console.log(this.$route.name);
+                console.log(this.$route);
 
             }).catch(err=>{
                 console.log(err.response);
@@ -121,7 +121,7 @@ export default {
         $route: {
             handler(to, from){
                 this.getPostsByCategorySlug(to.name);
-                this.getPopularPostsByCategorySlug(this.$route.name);
+                this.getPopularPostsByCategorySlug(to.name);
             }
         }
     }
