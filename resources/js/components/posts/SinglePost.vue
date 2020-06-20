@@ -139,6 +139,10 @@ export default {
                 {
                     property: 'og:description',
                     content: this.post ? this.post.body.substring(0, 100) : ''
+                },
+                {
+                    property: 'og:image',
+                    content: this.post ? this.post.image : ''
                 }
             ]
         }
