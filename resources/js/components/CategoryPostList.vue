@@ -78,6 +78,7 @@ export default {
                     this.totalPages = res.data.meta.last_page;
                 }
                 this.skeleton = false;
+                console.log(this.$route.name);
 
             }).catch(err=>{
                 console.log(err.response);
