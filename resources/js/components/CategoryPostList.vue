@@ -66,6 +66,7 @@ export default {
     },
     components: {
         'header-component': HeaderComponent,
+        //
         'post-card': PostCard
     },
     methods: {
