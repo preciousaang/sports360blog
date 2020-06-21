@@ -24,6 +24,7 @@ Route::post('add-post', 'PostsController@store')->middleware('auth:sanctum');
 Route::get('posts', 'PostsController@list');
 Route::get('all-posts/{opt?}', 'PostsController@allPosts');
 //**All About posts
+Route::post('search', 'PostsController@search');
 Route::get('posts-by-category/{slug}', 'PostsController@getPostsByCategorySlug');
 Route::get('post/{id}', 'PostsController@single');
 Route::get('post-by-slug/{slug}', 'PostsController@getPostBySlug');

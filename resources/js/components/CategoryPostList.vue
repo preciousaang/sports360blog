@@ -78,8 +78,7 @@ export default {
                     this.title = this.posts.pop().category.title;
                     this.totalPages = res.data.meta.last_page;
                 }
-                this.skeleton = false;
-                console.log(this.$route);
+                this.skeleton = false;                
 
             }).catch(err=>{
                 console.log(err.response);

@@ -23,6 +23,7 @@ import SerieA from './components/SerieA'
 import LaLiga from './components/LaLiga'
 import LeagueOne from './components/LeagueOne'
 import FileUploader from './components/auth/FileUploader';
+import SearchComponent from './components/SearchComponent';
 
 import swal from 'sweetalert';
 
@@ -35,6 +36,7 @@ import user from './mixins/user';
 const routes = [
     {path: '/', component: HomeComponent, name: 'homepage'},
     {path: '/about-us', component: AboutUsComponent, name: 'about-us'},
+    {path: '/search', component: SearchComponent, name: 'search'},
     {path: '/login', component: LoginComponent, name: 'login', beforeEnter: (to, from , next)=>{
         user.isLoggedIn(res=>{
             if(res){

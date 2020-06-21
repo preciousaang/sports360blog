@@ -100,8 +100,8 @@ class PostsController extends Controller
     }
 
     public function uploadImage(Request $request){
-        $file = basename($request->file('image')->store('public/uploads'));
-        return  asset('storage/uploads/'.$file);
+        $image_url = Cloudder::upload($request->file('image'))->getResult()['url'];
+        return  $image_url;
     }
 
     public function popularPosts($category=""){
@@ -115,5 +115,11 @@ class PostsController extends Controller
         }
 
         return response()->json($posts);
+    }
+
+    public function search(Request $request){
+        $posts = Post::where('title', 'like', "%{$request->post('search')}%")->paginate(1           );
+       
+        return PostResource::collection($posts);
     }
 }

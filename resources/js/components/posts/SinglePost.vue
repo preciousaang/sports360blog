@@ -18,19 +18,7 @@
                         <v-img :src="post.image"></v-img>
                         <v-divider class="mt-3 mb-5">
                         </v-divider>
-                        <!-- <v-container>
-                            <v-btn :href="fbShareLink" fab color="#4267b2" dark>
-                                <v-icon large>
-                                    mdi-facebook
-                                </v-icon>
-                            </v-btn>
-                            <v-btn fab color="#38A1F3" dark>
-                                <v-icon large>
-                                    mdi-twitter
-                                </v-icon>
-                            </v-btn>
-                            <h4>Share</h4>
-                        </v-container> -->
+                        
                         <div class="sharethis-inline-share-buttons"></div>
                         <v-divider class="mt-3 mb-5"></v-divider>
                         <v-card-text class="px-5 post-body text-subtitle-1"  v-html="post.body">

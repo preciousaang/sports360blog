@@ -41,10 +41,20 @@
                 <v-btn target="_blank" href="https://betpro360.com" exact>
                     Betpro360
                 </v-btn>
+                <v-dialog v-model="dialog" max-width="590">
+                    <v-card>
+                        <v-container>
+                            <v-form @submit.prevent="searchPost()">
+                                <v-text-field @input="$v.search.$touch()" @blur="$v.search.$touch()" :error-messages="searchErrors" placeholder="Search......" v-model="search"></v-text-field>
+                                <v-btn :disabled="$v.$invalid" type="submit" block>Search</v-btn>
+                            </v-form>
+                        </v-container>
+                    </v-card>
+                </v-dialog>
             </v-toolbar-items>
-            <!-- <v-btn icon>
-                <v-icon>mdi-magnify</v-icon>
-            </v-btn> -->
+            <v-btn icon>
+                <v-icon @click.stop="dialog=true">mdi-magnify</v-icon>
+            </v-btn>
             <v-app-bar-nav-icon @click="drawer = !drawer" class="d-lg-none d-xl-flex"></v-app-bar-nav-icon>
         </v-toolbar>
         <v-navigation-drawer absolute temporary v-model="drawer">
@@ -79,6 +89,8 @@
 </template>
 
 <script>
+import {validationMixin} from 'vuelidate';
+import {required} from 'vuelidate/lib/validators';
 export default {
     data(){
         return {
@@ -98,8 +110,32 @@ export default {
                 {text: 'About Us', route: {name: 'about-us'}, icon: 'mdi-account-group'}
             ],
             drawer: false,
+            search: null,
+            dialog: false,            
         }
-    }
+    },
+
+    validations: {
+        search: {required}
+    },
+    mixins: [validationMixin],
+    computed: {
+        searchErrors: function(){
+            const errors = [];
+            if(!this.$v.search.$dirty) return errors;
+            !this.$v.search.required && errors.push('This field is required');
+            return errors;
+        }
+    },
+    methods: {
+        searchPost(){
+            this.$v.$touch();
+            if(this.$v.$invalid) return false;           
+            this.$router.push({name: 'search', query: {q: this.search}});
+            this.dialog=false;      
+        }
+    },
+   
 }
 </script>
 
