@@ -90,16 +90,7 @@ export default {
             });
         },
     },
-
-    computed: {
-        fbShareLink: function(){
-            let baseURL = window.location.origin;
-            let fullPath = baseURL+this.$route.path;
-            let link = "https://web.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u="+encodeURI(fullPath)+"&display=popup&ref=plugin&src=share_button";
-            return link;
-        },
-    },
-
+ 
     metaInfo(){
         return {
             title: this.post ? this.post.title : 'Post Not Found',
