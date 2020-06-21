@@ -20,7 +20,7 @@
                             <p v-if="errors.category" class="red--text" v-text="errors.category">
 
                             </p>
-                            <wysiwyg  placeholder="Post Body" v-model="post.body" label="Post Body"></wysiwyg>
+                            <tiptap-vuetify :extensions="extensions"  placeholder="Post Body" v-model="post.body" label="Post Body"></tiptap-vuetify>
                             <p v-if="errors.body" class="red--text" v-text="errors.body">
 
                             </p>
@@ -68,6 +68,8 @@
 <script>
 import axios from 'axios';
 import swal from 'sweetalert';
+import FileUploader from './FileUploader';
+import { TiptapVuetify, Heading, Bold, Italic, Image, Strike, Underline, Code, Paragraph, BulletList, OrderedList, ListItem, Link, Blockquote, HardBreak, HorizontalRule, History } from 'tiptap-vuetify'
 export default {
     data(){
         return{
@@ -77,12 +79,40 @@ export default {
             image: null,
             changeImage: false,
             disabled: false,
+            extensions: [
+                History,
+                Blockquote,
+                Link,
+                Underline,
+                Strike,
+                Italic,
+                ListItem,
+                BulletList,
+                OrderedList,                
+                [Heading, {
+                    options: {
+                    levels: [1, 2, 3]
+                    }
+                }],
+                Bold,
+                Code,
+                HorizontalRule,
+                Paragraph,
+                HardBreak,
+                [Image, {
+                    options: {
+                        imageSources: [
+                            {component: FileUploader, name: 'File Uploader'}
+                        ]
+                    }
+                }]
+            ],
         }
     },
     metaInfo: {
         title: 'Edit Post'
     },
-
+    components: {TiptapVuetify},
 
     methods: {
         getPost(id){

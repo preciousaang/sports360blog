@@ -16,7 +16,7 @@
                             <v-select :error-messages="categoryErrors"  v-model="category" item-text="title" item-value="id" label="Category" :items="categories">
                             </v-select>
                             <br />
-                            <wysiwyg  placeholder="Post Body"  @input="$v.body.$touch()" @blur="$v.body.$touch()" v-model="body" label="Post Body"></wysiwyg>
+                            <tiptap-vuetify :extensions="extensions"  placeholder="Post Body"  @input="$v.body.$touch()" @blur="$v.body.$touch()" v-model="body" label="Post Body"></tiptap-vuetify>
                                 <p class="caption red--text">{{this.bodyErrors[0]}}</p>
                             <v-file-input accept="image/*" :error-messages="imageErrors" @input="$v.image.$touch()" @blur="$v.image.$touch()" label="Post Image" ref="files" v-model="image"></v-file-input>
                             <v-container fluid>
@@ -40,6 +40,9 @@
 import {validationMixin} from 'vuelidate';
 import {required} from 'vuelidate/lib/validators';
 import swal from 'sweetalert';
+import FileUploader from './FileUploader';
+import { TiptapVuetify, Heading, Bold, Italic, Image, Strike, Underline, Code, Paragraph, BulletList, OrderedList, ListItem, Link, Blockquote, HardBreak, HorizontalRule, History } from 'tiptap-vuetify'
+
 export default {
     mixins: [validationMixin],
     validations: {
@@ -61,9 +64,38 @@ export default {
             published: true,
             featured: false,
             disabled: false,
+            extensions: [
+                History,
+                Blockquote,
+                Link,
+                Underline,
+                Strike,
+                Italic,
+                ListItem,
+                BulletList,
+                OrderedList,                
+                [Heading, {
+                    options: {
+                    levels: [1, 2, 3]
+                    }
+                }],
+                Bold,
+                Code,
+                HorizontalRule,
+                Paragraph,
+                HardBreak,
+                [Image, {
+                    options: {
+                        imageSources: [
+                            {component: FileUploader, name: 'File Uploader'}
+                        ]
+                    }
+                }]
+            ],
 
         }
     },
+    components: {TiptapVuetify},
     computed: {
         titleErrors(){
             const errors = [];

@@ -22,6 +22,7 @@ import Bundesliga from './components/Bundesliga'
 import SerieA from './components/SerieA'
 import LaLiga from './components/LaLiga'
 import LeagueOne from './components/LeagueOne'
+import FileUploader from './components/auth/FileUploader';
 
 import swal from 'sweetalert';
 
@@ -56,6 +57,7 @@ const routes = [
     {path: '/admin', component: AdminComponent, children: [
         {path: '', component: DashboardComponent, name: 'dashboard'},
         {path: 'add-post', component: AddPostComponent, name: 'add-post'},
+        {path: 'upload-file', component: FileUploader},
         {path: 'edit-post/:id', component: EditPostComponent, name: 'edit-post'},
         {path: 'manage-posts', component: ManagePostsComponent, name: 'manage-posts'},
         {path: 'add-user', component: AddUserComponent, name: 'add-user'},

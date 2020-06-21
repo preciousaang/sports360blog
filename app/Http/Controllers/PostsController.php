@@ -100,7 +100,7 @@ class PostsController extends Controller
     }
 
     public function uploadImage(Request $request){
-        $file = basename($request->file('file')->store('public/uploads'));
+        $file = basename($request->file('image')->store('public/uploads'));
         return  asset('storage/uploads/'.$file);
     }
 
