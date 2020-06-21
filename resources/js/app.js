@@ -14,7 +14,10 @@ import Meta from 'vue-meta';
 import { TiptapVuetifyPlugin } from 'tiptap-vuetify'
 import 'tiptap-vuetify/dist/main.css';
 
-import "vue-wysiwyg/dist/vueWysiwyg.css";
+import LoadScript from 'vue-plugin-load-script';
+ 
+  Vue.use(LoadScript);
+
 window.$ = window.jQuery = require('jquery');
 
 /**

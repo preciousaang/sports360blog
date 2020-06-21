@@ -150,6 +150,14 @@ export default {
     },
     mounted(){
         this.getPost(this.$route.params.slug);
+        // As an instance method inside a component
+        this.$loadScript("https://platform-api.sharethis.com/js/sharethis.js#property=5eee41b6a922da001296fa2a&product=inline-share-buttons&cms=website")
+        .then(() => {
+        // Script is loaded, do something
+        })
+        .catch(() => {
+        // Failed to fetch script
+        });
     },
     watch: {
         $route(to, from){
