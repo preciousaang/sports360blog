@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('mailable', function () {
+//     $invoice = App\Post::find(1);
+
+//     return new App\Mail\SendMailPublished($invoice, 'preciousone@computer4u.com');
+// });
+
+Route::get('unsubscribe/{mail}', 'SubscribersController@unsubscribe')->name('unsubscribe');
+
 Route::get('/{any}', function () {
     return view('index');
 })->where('any', '.*');

@@ -16,7 +16,6 @@ import ManageUsersComponent from './components/auth/ManageUsersComponent'
 import EditUserComponent from './components/auth/EditUserComponent'
 import ProfileComponent from './components/auth/ProfileComponent'
 import AboutUsComponent from './components/AboutUsComponent'
-import ChampionsLeague from './components/ChampionsLeague'
 import PremierLeague from './components/PremierLeague'
 import Bundesliga from './components/Bundesliga'
 import SerieA from './components/SerieA'
@@ -24,6 +23,7 @@ import LaLiga from './components/LaLiga'
 import LeagueOne from './components/LeagueOne'
 import FileUploader from './components/auth/FileUploader';
 import SearchComponent from './components/SearchComponent';
+import UnsubscribeComponent from './components/UnsubscribeComponent'
 
 import swal from 'sweetalert';
 
@@ -48,14 +48,14 @@ const routes = [
     }},
     {path: '/football-news', component: CategoryPostList, name: 'football-news'},
     {path: '/sports-lifestyle', component: CategoryPostList, name: 'sports-lifestyle'},
-    {path: '/match-previews', component: CategoryPostList, name: 'match-previews'},
-    {path: '/champions-league-table', component: ChampionsLeague, name: 'champions-league'},
+    {path: '/match-previews', component: CategoryPostList, name: 'match-previews'},    
     {path: '/premier-league-table', component: PremierLeague, name: 'premier-league'},
     {path: '/bundesliga-table', component: Bundesliga, name: 'bundesliga'},
     {path: '/serie-a-table', component: SerieA, name: 'serie-a'},
     {path: '/la-liga-table', component: LaLiga, name: 'la-liga'},
     {path: '/league-1-table', component: LeagueOne, name: 'league-1'},
     {path: '/post/:slug', component: SinglePost, name: 'single-post'},
+    {path: '/unsubscribe-successful', component: UnsubscribeComponent, name: 'unsubscribe-successful'},
     {path: '/admin', component: AdminComponent, children: [
         {path: '', component: DashboardComponent, name: 'dashboard'},
         {path: 'add-post', component: AddPostComponent, name: 'add-post'},

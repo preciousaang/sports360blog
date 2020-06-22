@@ -5,41 +5,7 @@
           <v-content>              
               <router-view></router-view>
           </v-content>
-        <v-footer
-    dark
-    padless
-  >
-    <v-card
-      class="flex"
-      flat
-      tile
-    >
-      <v-card-title class="blue">
-        <strong class="text-center">Connect with us on social networks!</strong>
-
-        <v-spacer></v-spacer>
-
-        <v-btn
-          v-for="social in socials"
-          :key="social.icon"
-          :href="social.link"
-          target="_blank"
-          small
-          class="mx-4"
-          dark
-          icon
-        >
-          <v-icon>{{ social.icon }}</v-icon>
-        </v-btn>
-      </v-card-title>
-
-      <v-card-text class="py-2 white--text text-center">
-        {{ new Date().getFullYear() }} — <strong>Betpro 360</strong>
-        <br>
-        Designed by <a style="text-decoration: none; color: white; font-weight: bold;" target="_blank" href="https://wa.me/08097218247">AGZ</a>
-      </v-card-text>
-    </v-card>
-  </v-footer>
+        
       </v-app>
 
   </div>

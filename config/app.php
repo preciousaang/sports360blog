@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'post_url'=>env('APP_POST_URL', "http://localhost:8000/post/"),
 
     /*
     |--------------------------------------------------------------------------

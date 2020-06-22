@@ -18,14 +18,16 @@
                 </v-col>
             </v-row>
         </v-container>
-
+    <footer-component></footer-component>
     </div>
 </template>
 <script>
 import HeaderComponent from './HeaderComponent'
+import FooterComponent from './FooterComponent'
 export default {
     components: {
-        'header-component': HeaderComponent
+        'header-component': HeaderComponent,
+        FooterComponent
     },
     mounted() {
         

@@ -8,6 +8,8 @@
                     <post-card v-for="post of posts" :key="post.id" :post="post"></post-card>
                 </v-col>
                 <v-col cols="12" xs="12" sm="12" lg="4">
+                    <subscription-component></subscription-component>
+                    <v-divider></v-divider>
                     <h2 class="text-center">Trending</h2>
                     <v-divider class="mb-2"></v-divider>
                     <template v-if="popularPosts.length" v-for="popPost in popularPosts">
@@ -30,16 +32,21 @@
                 </v-col>
             </v-row>
         </v-container>
+        <footer-component></footer-component>
     </div>
 </template>
 
 <script>
 import HeaderComponent from './HeaderComponent';
+import SubscriptionComponent from './SubscriptionComponent'
+import FooterComponent from './FooterComponent'
 import PostCard from './posts/PostCard';
 import axios from 'axios';
 export default {
     components: {
         'header-component': HeaderComponent,
+        'footer-component': FooterComponent,
+        SubscriptionComponent,
         'post-card': PostCard
     },
     data(){

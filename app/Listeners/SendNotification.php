@@ -6,6 +6,7 @@ use App\Events\PostCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Subscriber;
+use App\Mail\SendMailPublished;
 use Illuminate\Support\Facades\Mail;
 
 class SendNotification
@@ -28,9 +29,9 @@ class SendNotification
      */
     public function handle(PostCreated $event)
     {
-        // $subscribers = Subscriber::all();
-        // foreach($subscribers as $subscriber){
-        //     Mail::to($subscriber->email);
-        // }
+        $subscribers = Subscriber::all();
+        foreach($subscribers as $subscriber){
+            Mail::to($subscriber->email)->send(new SendMailPublished($event->post, $subscriber->email));
+        }
     }
 }

@@ -44,12 +44,13 @@
         <v-container v-else>
             <h4>No Posts in this category</h4>
         </v-container>
-
+        <footer-component></footer-component>
     </div>
 </template>
 
 <script>
 import HeaderComponent from './HeaderComponent';
+import FooterComponent from './FooterComponent'
 import PostCard from './posts/PostCard';
 import axios from 'axios'
 export default {
@@ -66,6 +67,7 @@ export default {
     },
     components: {
         'header-component': HeaderComponent,
+        'footer-component': FooterComponent,
         //
         'post-card': PostCard
     },

@@ -23,17 +23,19 @@
         <v-container v-else>
             <h4>No Search Result</h4>
         </v-container>
-
+        <footer-component></footer-component>
     </div>
+    
     </div>
 </template>
 
 <script>
 import HeaderComponent from './HeaderComponent'
+import FooterComponent from './FooterComponent'
 import PostCard from './posts/PostCard';
 import axios from 'axios'
 export default{
-    components: {HeaderComponent, 'post-card': PostCard},
+    components: {HeaderComponent, 'post-card': PostCard, FooterComponent},
     mounted(){
         this.getSearch();
     },    

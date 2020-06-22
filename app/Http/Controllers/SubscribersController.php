@@ -27,4 +27,12 @@ class SubscribersController extends Controller
     public function delete(Request $request){
 
     }
+
+    public function unsubscribe($email){
+        $subscriber = Subscriber::whereEmail($email)->first();
+        if($subscriber){
+            $subscriber->delete();
+        }
+        return redirect('/unsubscribe-successful');
+    }
 }
