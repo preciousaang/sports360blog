@@ -15,7 +15,7 @@
                     </v-list-item-icon>
                     <v-list-item-title v-text="item.text">
                     </v-list-item-title>
-                </v-list-item>
+                </v-list-item>                
                 <v-list-group :prepend-icon="item.icon" v-else no-action>
                     <template v-slot:activator>
                       <v-list-item-content>
@@ -31,11 +31,38 @@
                         <v-list-item-content>
                             <v-list-item-title v-text="child.text">
                             </v-list-item-title>
-                        </v-list-item-content>
+                        </v-list-item-content>                                                
+
                     </v-list-item>
                 </v-list-group>
-
             </template>
+            <v-list-group v-if="user && user.role.title=='admin'" prepend-icon="mdi-account-settings" no-action>
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>Users</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item :to="child.route" v-for="child in users_menu" :key="child.text">
+                        <v-list-item-icon>
+                            <v-icon v-text="child.icon">
+
+                            </v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title v-text="child.text">
+                            </v-list-item-title>
+                        </v-list-item-content>                                                
+
+                    </v-list-item>
+            </v-list-group>
+           <v-list-item link :to="{name: 'profile'}">
+                    <v-list-item-icon>
+                        <v-icon>mdi-account</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>
+                        Update Account
+                    </v-list-item-title>
+                </v-list-item>    
             <v-list-item @click.prevent="logout()" link>
                 <v-list-item-icon>
                     <v-icon>mdi-logout</v-icon>
@@ -61,21 +88,42 @@ export default {
                     {text: 'Manage Posts', icon: 'mdi-file', route: {name: 'manage-posts'}},
                     {text: 'Categories', icon: 'mdi-file', route: {name: 'manage-categories'}},
 
-                ]},
-                {text: 'Users', icon: 'mdi-account-settings', route: '#', children: [
-                    {text: 'Add User', icon: 'mdi-account-plus', route: {name: 'add-user'}},
-                    {text: 'Manage Users', icon: 'mdi-account-details', route: {name: 'manage-users'}},
-                    {text: 'Update Account', icon: 'mdi-account', route: {name: 'profile'}},
-                    // {text: 'Subscribers', icon: 'mdi-email-newsletter', route: {name: 'subscribers'}}
-                ]},
-            ]
+                ]},               
+            ],
+            users_menu: [
+                {text: 'Add User', icon: 'mdi-account-plus', route: {name: 'add-user'}},
+                {text: 'Manage Users', icon: 'mdi-account-details', route: {name: 'manage-users'}},
+            ],
+            user: null,
         }
     },
     methods: {
         logout(){
-            axios.post('/logout').then(res=>{
-                this.$router.push({name: 'login'});
-            });
+            if(confirm('Are you sure you want to logout?')){
+                axios.post('/logout').then(res=>{
+                    this.$router.push({name: 'login'});
+                });
+            }
+            
+        },
+
+        getUser: function(){
+            axios.get('/user').then(response=>{
+                this.user = response.data.data;
+                console.log(response);
+            }).catch(error=>{
+                console.log(error.response);
+            })
+        }
+    },
+
+    created(){
+        this.getUser();
+    },
+
+    $route: {
+        handler(to, from){
+            this.getUser();
         }
     }
 }

@@ -130,6 +130,7 @@ export default {
             axios.post('/add-user', data).then(res=>{
                 console.log(res);
                 swal({title: 'User Added Successfully', icon: 'success'});
+                this.$router.push({name: 'manage-users'});
 
             }).catch(err=>{
                 console.log(err.response);

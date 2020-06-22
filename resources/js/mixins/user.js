@@ -4,7 +4,7 @@ class User{
     isLoggedIn(cb){
         axios.get('/user').then(response=>{
             cb(true);
-        }).catch(err=>{
+        }).catch(err=>{            
             cb(false);
         });
     }

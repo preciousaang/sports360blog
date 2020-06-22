@@ -39,9 +39,9 @@ const routes = [
     {path: '/search', component: SearchComponent, name: 'search'},
     {path: '/login', component: LoginComponent, name: 'login', beforeEnter: (to, from , next)=>{
         user.isLoggedIn(res=>{
-            if(res){
+            if(res){                
                 next('/admin');
-            }else{
+            }else{                
                 next();
             }
         });

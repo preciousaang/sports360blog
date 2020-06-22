@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mb-10">
         <header-component></header-component>
         <v-container v-if="post">
 
@@ -50,16 +50,19 @@
                 </v-col>
             </v-row>
         </v-container>
+        <footer-component></footer-component>
     </div>
 
 </template>
 
 <script>
 import HeaderComponent from '../HeaderComponent';
+import FooterComponent from '../FooterComponent'
 import axios from 'axios';
 export default {
     components: {
         'header-component': HeaderComponent,
+        FooterComponent
     },
     data(){
         return {
@@ -141,6 +144,13 @@ export default {
     watch: {
         $route(to, from){
             this.getPost(to.params.slug);
+            this.$loadScript("https://platform-api.sharethis.com/js/sharethis.js#property=5eee41b6a922da001296fa2a&product=inline-share-buttons&cms=website")
+            .then(() => {
+            // Script is loaded, do something
+            })
+            .catch(() => {
+            // Failed to fetch script
+            });
         }
     }
 }

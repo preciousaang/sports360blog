@@ -3,7 +3,7 @@
         <header-component></header-component>
         <v-container>
             <v-row justify-content-center>
-                <v-col cols="9">
+                <v-col cols="12">
                     <v-card>
                         <v-app-bar dark>
                             <v-toolbar-title>

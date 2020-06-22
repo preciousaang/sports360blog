@@ -24,7 +24,7 @@
                                     mdi-pin
                                 </v-icon>
                             </v-list-item-icon>
-                             A prediction platform developed with the best system that guarantees that you have at least 85% chance of winning.
+                             <p>A prediction platform developed with the best system that guarantees that you have at least 85% chance of winning.</p>
                         </v-list-item>
                         <v-list-item>
                             <v-list-item-icon>
@@ -32,7 +32,7 @@
                                     mdi-pin
                                 </v-icon>
                             </v-list-item-icon>
-                             We offer you the best customer service you will ever think of. This means that resolving your challenges is our top priority.
+                             <p>We offer you the best customer service you will ever think of. This means that resolving your challenges is our top priority.</p>
                         </v-list-item>
                         <v-list-item>
                             <v-list-item-icon>
@@ -40,7 +40,7 @@
                                     mdi-pin
                                 </v-icon>
                             </v-list-item-icon>
-                             FREE offers for you even before signing up with us. You have access to certain predictions for just visiting our site - cool deal.
+                            <p>FREE offers for you even before signing up with us. You have access to certain predictions for just visiting our site - cool deal.</p>
                         </v-list-item>
                         <v-list-item>
                             <v-list-item-icon>
@@ -48,12 +48,16 @@
                                     mdi-pin
                                 </v-icon>
                             </v-list-item-icon>
-                             All our offers are simply created just for you.
+                             <p>All our offers are simply created just for you.</p>
                         </v-list-item>
                     </v-list>
                     <p>As a lover of the sporting world who is keen on helping you break through the challenges of racking your heads around the best deals for the day, we are here to make your ride smooth and successful.
 
                     All you need to do is get started with us by clicking on the link below.</p>
+
+
+                    <a target="_blank" href="http://betpro360.com">
+                    <v-img with="100%" :src="require('./sign-up.png')"></v-img></a>
 
 
                 </v-col>
@@ -80,7 +84,7 @@ export default {
                 {
                     vmid: 'author',
                     name: 'author',
-                    content: 'Betpro360'
+                    content: 'Betpro360'                    
                 }
             ],
         }
@@ -95,6 +99,6 @@ export default {
 <style lang="css" scoped>
     p{
         font-family: serif;
-        font-size: 150%;
+        font-size: 120%;
     }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
-      <v-container>
-           <h3>Admin Dashboard</h3>
+      <v-container>      
+           <h2 v-if="user" class="text-center">Welcome, {{user.name}}</h2>
       </v-container>
   </div>
 </template>
@@ -15,7 +15,8 @@ export default {
         return {
             title: null,
             body: null,
-            image: null
+            image: null,
+            user: null,
         }
     },
     components: {
@@ -23,13 +24,14 @@ export default {
     },
     metaInfo(){
         return {
-            title: 'Admin Dashboard'
+            title: 'Admin Dashboard',
+            
         }
     },
     methods:{
         getUser: function(){
             axios.get('/user').then(response=>{
-                console.log(response);
+                this.user = response.data.data;
             }).catch(error=>{
                 console.log(error.response);
             })

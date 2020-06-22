@@ -1,11 +1,11 @@
 <template>
 <div class="mt-6">
 <v-footer
-          height="90"
+          
+          height="50px"
           dark
           padless
           absolute
-
         >
     <v-card
       class="flex"
