@@ -42,6 +42,9 @@ Route::post('upload-image', 'PostsController@uploadImage')->middleware('auth:san
 
 //**About users
 Route::get('all-roles', 'RolesController@getRoles')->middleware('auth:sanctum');
+Route::post('add-subscriber', 'SubscribersController@store');
+Route::get('subscriber/{email}', 'SubscribersController@find');
+Route::delete('remove-subscriber', 'SubscribersController@delete');
 
 Route::namespace('Users')->group(function(){
     Route::get('auth-user', 'UsersController@getAuthUser')->middleware('auth:sanctum');

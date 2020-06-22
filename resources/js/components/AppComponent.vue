@@ -15,7 +15,7 @@
       tile
     >
       <v-card-title class="blue">
-        <strong class="subheading">Get connected with us on social networks!</strong>
+        <strong class="text-center">Connect with us on social networks!</strong>
 
         <v-spacer></v-spacer>
 
@@ -24,11 +24,12 @@
           :key="social.icon"
           :href="social.link"
           target="_blank"
+          small
           class="mx-4"
           dark
           icon
         >
-          <v-icon size="24px">{{ social.icon }}</v-icon>
+          <v-icon>{{ social.icon }}</v-icon>
         </v-btn>
       </v-card-title>
 

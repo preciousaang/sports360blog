@@ -16,7 +16,7 @@
         </v-btn>
             </v-toolbar-items>
             <v-spacer></v-spacer>
-            <v-toolbar-items>               
+            <v-toolbar-items class="d-none d-lg-block">               
             <a href="#" onclick="doGTranslate('en|en');return false;" title="English" class="gflag nturl" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="16" width="16" alt="English" /></a><a href="#" onclick="doGTranslate('en|fr');return false;" title="French" class="gflag nturl" style="background-position:-200px -100px;"><img src="//gtranslate.net/flags/blank.png" height="16" width="16" alt="French" /></a><a href="#" onclick="doGTranslate('en|de');return false;" title="German" class="gflag nturl" style="background-position:-300px -100px;"><img src="//gtranslate.net/flags/blank.png" height="16" width="16" alt="German" /></a><a href="#" onclick="doGTranslate('en|it');return false;" title="Italian" class="gflag nturl" style="background-position:-600px -100px;"><img src="//gtranslate.net/flags/blank.png" height="16" width="16" alt="Italian" /></a><a href="#" onclick="doGTranslate('en|pt');return false;" title="Portuguese" class="gflag nturl" style="background-position:-300px -200px;"><img src="//gtranslate.net/flags/blank.png" height="16" width="16" alt="Portuguese" /></a><a href="#" onclick="doGTranslate('en|ru');return false;" title="Russian" class="gflag nturl" style="background-position:-500px -200px;"><img src="//gtranslate.net/flags/blank.png" height="16" width="16" alt="Russian" /></a><a href="#" onclick="doGTranslate('en|es');return false;" title="Spanish" class="gflag nturl" style="background-position:-600px -200px;"><img src="//gtranslate.net/flags/blank.png" height="16" width="16" alt="Spanish" /></a>
             <select style=" background-color: white; font-weight: bold;" onchange="doGTranslate(this);"><option value="">Select Language</option><option value="en|en">English</option><option value="en|fr">French</option><option value="en|de">German</option><option value="en|es">Spanish</option><option value="en|sw">Swahili</option></select><div id="google_translate_element2"></div>
             </v-toolbar-items>
@@ -60,8 +60,8 @@
                 </template>
 
                 <v-btn target="_blank" href="https://betpro360.com" exact>
-                    Betpro360
-                </v-btn>
+                    Main Site
+                </v-btn>                
                 <v-dialog v-model="dialog" max-width="590">
                     <v-card>
                         <v-container>
@@ -72,15 +72,30 @@
                         </v-container>
                     </v-card>
                 </v-dialog>
+                <!-- <v-dialog v-model="mail_dialog" max-width="590">
+                    <v-card>                        
+                        <v-container>
+                            <v-form @submit.prevent="subscribe()">
+                                <v-text-field @blur="$v.newsletter.$touch()" :error-messages="newsletterErrors"  placeholder="Subscribe to our Newsletter" v-model="newsletter"></v-text-field>                               
+                                <v-btn :disabled="$v.newsletter.$invalid" type="submit" block>Subscribe</v-btn>
+                            </v-form>
+                        </v-container>
+                    </v-card>
+                </v-dialog> -->
             </v-toolbar-items>
             <v-btn icon>
                 <v-icon @click.stop="dialog=true">mdi-magnify</v-icon>
             </v-btn>
+            <!-- <v-btn icon>
+               <v-icon @click.stop="mail_dialog=true">mdi-mail</v-icon>
+            </v-btn> -->
             <v-app-bar-nav-icon @click="drawer = !drawer" class="d-lg-none d-xl-flex"></v-app-bar-nav-icon>
         </v-toolbar>
         <v-navigation-drawer absolute temporary v-model="drawer">
             <v-img class="logo" height="50" :src="require('./logo.png')" contain></v-img>
             <v-divider></v-divider>
+            <select style=" background-color: white; font-weight: bold;" onchange="doGTranslate(this);"><option value="">Select Language</option><option value="en|en">English</option><option value="en|fr">French</option><option value="en|de">German</option><option value="en|es">Spanish</option><option value="en|sw">Swahili</option></select><div id="google_translate_element2"></div>
+            <v-divider></v-divider>            
             <v-list nav dense flat>
             <template v-for="item in items">
                 <v-list-item v-if="!item.children" link :to="item.route">
@@ -104,6 +119,12 @@
                     </v-list-item>
                 </v-list-group>
             </template>
+            <v-list-item link target="_blank" href="https://betpro360.com">
+                <v-list-item-icon>
+                    <v-icon>mdi-ball</v-icon>                    
+                </v-list-item-icon>
+                <v-list-item-title>Main Site</v-list-item-title>
+            </v-list-item>
         </v-list>
         </v-navigation-drawer>
     </div>
@@ -111,7 +132,8 @@
 
 <script>
 import {validationMixin} from 'vuelidate';
-import {required} from 'vuelidate/lib/validators';
+import {required, email} from 'vuelidate/lib/validators';
+import swal from 'sweetalert';
 export default {
     data(){
         return {
@@ -140,28 +162,72 @@ export default {
             ],
             drawer: false,
             search: null,
-            dialog: false,            
+            dialog: false,
+            newsletter: null,
+            mail_dialog: false,              
         }
     },
 
     validations: {
-        search: {required}
+        search: {required},
+        newsletter: {
+                required,
+                email,
+                isUnique: function(value){
+                    if(value==='') return true;
+                    return new Promise((resolve, reject)=>{
+                        axios.get('/subscriber/'+value).then(res=>{
+                            console.log(res);
+                            if(res.status==200){
+                                resolve(false);
+                            }
+                        }).catch(err=>{
+                            console.log(err.response)
+                            resolve(true);
+                        });
+                    })
+                }
+            },
     },
     mixins: [validationMixin],
     computed: {
         searchErrors: function(){
             const errors = [];
             if(!this.$v.search.$dirty) return errors;
-            !this.$v.search.required && errors.push('This field is required');
+            !this.$v.search.required && errors.push('This field is required');            
+            return errors;
+        },
+
+        newsletterErrors: function(){
+            const errors = [];
+            if(!this.$v.newsletter.$dirty) return errors;
+            !this.$v.newsletter.required && errors.push('This field is required');            
+            !this.$v.newsletter.email && errors.push('This field must be an email');    
+            !this.$v.newsletter.isUnique && errors.push('This email already exists');    
             return errors;
         }
+
+        
     },
     methods: {
         searchPost(){
-            this.$v.$touch();
+            this.$v.search.$touch();
             if(this.$v.$invalid) return false;           
             this.$router.push({name: 'search', query: {q: this.search}});
             this.dialog=false;      
+        },
+
+        subscribe(){
+            this.$v.newsletter.$touch();
+            if(this.$v.newsletter.$invalid) return false;       
+            axios.post('add-subscriber', {subscriber: this.newsletter}).then(res=>{
+                swal({title: 'Thank You for subscribing', icon: 'success'});
+                this.newsletter = null;
+                this.mail_dialog = false;
+                this.$v.$reset();
+            }).catch(err=>{
+                console.log(err.response);
+            })
         }
     },
    
