@@ -1,6 +1,7 @@
 <template>
-<div>
+<div class="mt-6">
 <v-footer
+          height="90"
           dark
           padless
           absolute
@@ -12,9 +13,13 @@
       tile
     >
       <v-card-title class="blue">
-        <strong class="text-center">Connect with us on social networks!</strong>
 
-        <v-spacer></v-spacer>
+      <v-row>
+      <v-col cols="12" lg="8">
+        <strong class="text-center">Connect with us on social networks!</strong>
+      </v-col>
+        
+        <v-col cols="12" lg="4">
 
         <v-btn
           v-for="social in socials"
@@ -28,6 +33,8 @@
         >
           <v-icon>{{ social.icon }}</v-icon>
         </v-btn>
+        </v-col>
+        </v-row>
       </v-card-title>
 
       <v-card-text class="py-2 white--text text-center">
