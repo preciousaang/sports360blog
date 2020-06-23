@@ -24,6 +24,7 @@ import LeagueOne from './components/LeagueOne'
 import FileUploader from './components/auth/FileUploader';
 import SearchComponent from './components/SearchComponent';
 import UnsubscribeComponent from './components/UnsubscribeComponent'
+import SubscribersListComponent from './components/auth/SubscribersListComponent'
 
 import swal from 'sweetalert';
 
@@ -65,6 +66,7 @@ const routes = [
         {path: 'add-user', component: AddUserComponent, name: 'add-user'},
         {path: 'manage-users', component: ManageUsersComponent, name: 'manage-users'},
         {path: 'edit-user/:id', component: EditUserComponent, name: 'edit-user'},
+        {path: 'subscribers', component: SubscribersListComponent, name: 'subscribers'},
         {path: 'manage-categories', component: CategoriesComponent, name: 'manage-categories'},
         {path: 'edit-category/:id', component: CategoriesComponent, name: 'edit-category'},
         {path: 'profile', component: ProfileComponent, name: 'profile'},

@@ -24,6 +24,10 @@ class CategoriesTableSeeder extends Seeder
             [
                 'title'=>'Sports Lifestyle',
                 'slug'=>'sports-lifestyle'
+            ],
+            [
+                'title'=>'Match Previews',
+                'slug'=>'match-previews'
             ]
         ]);
     }

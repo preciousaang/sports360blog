@@ -57,7 +57,7 @@
 
 
                     <a target="_blank" href="http://betpro360.com">
-                    <v-img with="100%" :src="require('./sign-up.png')"></v-img></a>
+                    <v-img with="70%" :src="require('./sign-up.png')"></v-img></a>
 
 
                 </v-col>

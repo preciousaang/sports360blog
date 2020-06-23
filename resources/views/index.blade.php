@@ -7,6 +7,11 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link rel="icon" @if(config('app.debug')) href="{{asset('images/logo.png')}}" @else href="{{secure_asset('images/logo.png')}}" @endif>
+        <meta name="description" content="Betpro360 blog gives the latest sports news from around the globe... breaking news, sports lifestyle, rumours, transfers, league table standings, detailed match analysis and free betting tips.">
+        <meta name="og:description" content="Betpro360 blog gives the latest sports news from around the globe... breaking news, sports lifestyle, rumours, transfers, league table standings, detailed match analysis and free betting tips.">
+        <meta name="author" content="Bet 360 Pro">
+        <meta property="og:image" @if(config('app.debug')) content="{{asset('images/logo.png')}}" @else content="{{secure_asset('images/logo.png')}} @endif">
+
         <style type="text/css">
 
         a.gflag {vertical-align:middle;font-size:16px;padding:1px 0;background-repeat:no-repeat;background-image:url(//gtranslate.net/flags/16.png);}

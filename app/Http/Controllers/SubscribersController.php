@@ -23,6 +23,11 @@ class SubscribersController extends Controller
         }
     }
 
+    public function allSubscribers(Request $request){
+        $subs = Subscriber::orderBy('email')->paginate($request->get('per_page'));
+        return response()->json($subs);
+    }
+
 
     public function delete(Request $request){
 

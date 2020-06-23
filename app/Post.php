@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Notifications\Notifiable;
 
 class Post extends Model
 {
-    use Sluggable;
+    use Sluggable, Notifiable;
     protected $fillable = ['category_id', 'user_id', 'title', 'views', 'body', 'slug', 'image', 'featured', 'published'];
 
     public function user(){

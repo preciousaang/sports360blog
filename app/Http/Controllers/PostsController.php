@@ -8,6 +8,8 @@ use App\Category;
 use App\Http\Resources\PostResource;
 use JD\Cloudder\Facades\Cloudder;
 use App\Events\PostCreated;
+use App\Notifications\PostWasPublished;
+use Illuminate\Support\Facades\Notification;
 
 class PostsController extends Controller
 {
@@ -23,6 +25,8 @@ class PostsController extends Controller
             'image'=>$image
         ]);
         event(new PostCreated($newPost));
+        //Notification::send(\App\User::all(), new PostWasPublished($newPost));    
+        $newPost->notify(new PostWasPublished());    
         return response()->json($newPost, 200);
     }
 

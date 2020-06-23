@@ -5,7 +5,7 @@
     </head>
     <body style="height: 100%;">
         <div style="height: 100%; width: 400px; border: 1px solid black; margin: 5px auto;">
-            <div style="width: 100%; display: flex; align-content: center; align-items: center; height: 150px; background-color: teal">
+            <div style="width: 100%; display: flex; align-content: center; align-items: center; height: 150px;">
                 <img style="align-self: center; margin: auto" src="{{asset('images/logo.png')}}">
                 
             </div>
