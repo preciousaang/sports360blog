@@ -10,7 +10,7 @@
         <meta name="description" content="Betpro360 blog gives the latest sports news from around the globe... breaking news, sports lifestyle, rumours, transfers, league table standings, detailed match analysis and free betting tips.">
         <meta name="og:description" content="Betpro360 blog gives the latest sports news from around the globe... breaking news, sports lifestyle, rumours, transfers, league table standings, detailed match analysis and free betting tips.">
         <meta name="author" content="Bet 360 Pro">
-        <meta property="og:image" @if(config('app.debug')) content="{{asset('images/logo.png')}}" @else content="{{secure_asset('images/logo.png')}} @endif">
+        <meta property="og:image" @if(config('app.debug')) content="{{asset('images/logo.png')}}" @else content="{{secure_asset('images/logo.png')}}"@endif>
         <meta property="og:title" content="Betpro 360">
         <style type="text/css">
 
