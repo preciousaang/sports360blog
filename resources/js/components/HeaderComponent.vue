@@ -18,8 +18,9 @@
             <v-spacer></v-spacer>
             <v-toolbar-items class="d-none d-lg-block">            
             <select style=" background-color: white; font-weight: bold; padding: 10px;" onchange="doGTranslate(this);"><option value="">Select Language</option><option value="en|en">English</option><option value="en|fr">French</option><option value="en|de">German</option><option value="en|es">Spanish</option><option value="en|sw">Swahili</option></select><div id="google_translate_element2"></div>
-            </v-toolbar-items>
+            </v-toolbar-items>            
         </v-toolbar>
+        
         <v-toolbar>
             <v-toolbar-items>
                 <router-link :to="{name: 'homepage'}" exact>
@@ -83,7 +84,8 @@
             <v-img class="logo" height="50" :src="require('./logo.png')" contain></v-img>
             <v-divider></v-divider>
             <select style=" background-color: white; font-weight: bold;" onchange="doGTranslate(this);"><option value="">Select Language</option><option value="en|en">English</option><option value="en|fr">French</option><option value="en|de">German</option><option value="en|es">Spanish</option><option value="en|sw">Swahili</option></select><div id="google_translate_element2"></div>
-            <v-divider></v-divider>            
+            <v-divider></v-divider>
+                        
             <v-list nav dense flat>
             <template v-for="item in items">
                 <v-list-item v-if="!item.children" link :to="item.route">
@@ -109,7 +111,7 @@
             </template>
             <v-list-item link target="_blank" href="https://betpro360.com">
                 <v-list-item-icon>
-                    <v-icon>mdi-web</v-icon>                    
+                    <v-icon>mdi-play-circle-outline</v-icon>                    
                 </v-list-item-icon>
                 <v-list-item-title>Betting Tips</v-list-item-title>
             </v-list-item>
@@ -118,15 +120,17 @@
                     <v-icon>mdi-web</v-icon>                    
                 </v-list-item-icon>
                 <v-list-item-title>Main Site</v-list-item-title>
-            </v-list-item>            
-
-        </v-list>
-        <template v-slot:append>
-        <div class="pa-2">
-          <subscription-component></subscription-component>
-        </div>
-      </template>
+            </v-list-item>
+        </v-list>        
         </v-navigation-drawer>
+        <v-container class="d-lg-none d-xl-flex">
+            <v-row>
+            <v-col>
+                <subscription-component></subscription-component>
+            </v-col>
+        </v-row>
+        </v-container>
+        
     </div>
 </template>
 

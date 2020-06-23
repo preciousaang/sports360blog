@@ -57,7 +57,7 @@
 
 
                     <a align="center" style="display: flex; align-content: center; width: 100%;" target="_blank" href="http://betpro360.com">
-                    <v-img align="center"  max-width="30%" :src="require('./sign-up.png')"></v-img></a>
+                    <v-img style="margin: 0 auto;"  max-width="30%" :src="require('./sign-up.png')"></v-img></a>
 
 
                 </v-col>

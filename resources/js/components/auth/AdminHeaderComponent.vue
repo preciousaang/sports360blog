@@ -93,7 +93,7 @@ export default {
             users_menu: [
                 {text: 'Add User', icon: 'mdi-account-plus', route: {name: 'add-user'}},
                 {text: 'Manage Users', icon: 'mdi-account-details', route: {name: 'manage-users'}},
-                {text: 'Subscribers List', icon: 'mdi-newsletter', route: {name: 'subscribers'}},
+                {text: 'Subscribers List', icon: 'mdi-email-newsletter', route: {name: 'subscribers'}},
             ],
             user: null,
         }

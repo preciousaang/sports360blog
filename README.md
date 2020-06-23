@@ -31,29 +31,27 @@
     ### For Example
     > APP_POST_URL=http://betpro360blog.com/post/
 
-    - BROADCAST_DRIVER:         pusher
-    - CLEARDB_DATABASE_URL:     mysql://ba9f30b7933f6b:55572492@us-cdbr-east-05.cleardb.net/heroku_023ed50edec0418?reconnect=true
+    - BROADCAST_DRIVER:         pusher    
     - FACEBOOK_ACCESS_TOKEN:    EAAEaHZBC8jsoBACzZAf9uKLcETqgHIABZB7NvuazmQbZBjuQP3Fg9Ure9NZCetgZBlGUc5IZAke3PZCwtOrd8eV7uUpk9CtZCUq1bfXfxGzZA8wrOXDVZCEZBFvIyPYkZAZAAvEkqsznHCgXQ7eAUBLMd5vYBEFZAsBZBRaeZCAJaHBkJLdZAKZCh7XbNGUjlBvFWadjwlrZB6EZD
-    - FACEBOOK_APP_ID:          310199193472714
-    - FACEBOOK_APP_SECRET:      5e70f1aa285bc59f71650f0f8792397f
-    - LOG_CHANNEL:              errorlog
-    - MAIL_DRIVER:              smtp
-    - MAIL_ENCRYPTION:          null
-    - MAIL_FROM_ADDRESS:        contact@betpro360.com
-    - MAIL_FROM_NAME:           BetPro360
-    - MAIL_HOST:                smtp.sendgrid.net
-    - MAIL_PASSWORD:            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
-    - MAIL_PORT:                587
-    - MAIL_USERNAME:            apikey
-    - MIX_PUSHER_APP_CLUSTER:   eu
-    - MIX_PUSHER_APP_KEY:       0adf5c59e67306d7842a
-    - NPM_CONFIG_PRODUCTION:    false
-    - PUSHER_APP_CLUSTER:       eu
-    - PUSHER_APP_ID:            1021612
-    - PUSHER_APP_KEY:           0adf5c59e67306d7842a
-    - PUSHER_APP_SECRET:        fa1b2f49669b3ec55df8
-    - SANCTUM_STATEFUL_DOMAINS: bet360pro.herokuapp.com >> This should be changed to your domain
+    - FACEBOOK_APP_ID=310199193472714
+    - FACEBOOK_APP_SECRET=5e70f1aa285bc59f71650f0f8792397f    
+    - MAIL_DRIVER=smtp
+    - MAIL_ENCRYPTIONnull=
+    - MAIL_FROM_ADDRESS=contact@betpro360.com
+    - MAIL_FROM_NAME=BetPro360
+    - MAIL_HOST=mtp.sendgrid.net
+    - MAIL_PASSWORD=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
+    - MAIL_PORT=587
+    - MAIL_USERNAME=apikey
+    - MIX_PUSHER_APP_CLUSTER=eu
+    - MIX_PUSHER_APP_KEY=0adf5c59e67306d7842a
+    - NPM_CONFIG_PRODUCTION=false
+    - PUSHER_APP_CLUSTER=eu
+    - PUSHER_APP_ID=1021612
+    - PUSHER_APP_KEY=0adf5c59e67306d7842a
+    - PUSHER_APP_SECRET:=fa1b2f49669b3ec55df8
+    - SANCTUM_STATEFUL_DOMAINS=bet360pro.herokuapp.com >> This should be changed to your domain
     ### For example
-    > SANCTUM_STATEFUL_DOMAINS = betpro360blog.com >> ** Note no http:// in front of the url ***
-    - SESSION_DRIVER:           cookie
-    - SESSION_LIFETIME:         120
+    > SANCTUM_STATEFUL_DOMAINS=betpro360blog.com >> ** Note no http:// in front of the url ***
+    - SESSION_DRIVER=cookie
+    - SESSION_LIFETIME=240
