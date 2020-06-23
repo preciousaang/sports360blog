@@ -56,8 +56,8 @@
                     All you need to do is get started with us by clicking on the link below.</p>
 
 
-                    <a target="_blank" href="http://betpro360.com">
-                    <v-img with="70%" :src="require('./sign-up.png')"></v-img></a>
+                    <a align="center" style="display: flex; align-content: center; width: 100%;" target="_blank" href="http://betpro360.com">
+                    <v-img align="center"  max-width="30%" :src="require('./sign-up.png')"></v-img></a>
 
 
                 </v-col>
