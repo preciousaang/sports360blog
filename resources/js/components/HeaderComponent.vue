@@ -1,14 +1,14 @@
 <template>
     <div>
         <v-toolbar color="blue">
-            <v-toolbar-items>
+            <v-toolbar-items class="ml-2">
                 <v-btn
                 v-for="social in socials"
                 :key="social.icon"
                 :href="social.link"
                 small
                 target="_blank"
-                class="mx-4"
+                class="mx-3"
                 dark
                 icon
                 >

@@ -15,21 +15,22 @@
       <v-card-title class="blue">
 
       <v-row>
-      <v-col cols="12" lg="8">
-        <strong class="text-center">Connect with us on social networks!</strong>
+      <v-col sm="12" cols="12" lg="8">
+        Connect with us on social networks!
       </v-col>
         
-        <v-col cols="12" lg="4">
+        <v-col sm="12" cols="12" lg="4">
 
         <v-btn
           v-for="social in socials"
           :key="social.icon"
           :href="social.link"
+          link
           target="_blank"
           small
-          class="mx-4"
-          dark
+          dense
           icon
+          class="mx-3"
         >
           <v-icon>{{ social.icon }}</v-icon>
         </v-btn>
