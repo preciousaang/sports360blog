@@ -1,8 +1,8 @@
 # Bet 36o Pro installation guide
 
 1. Clone the project
-2. Run ** composer install ** on terminal
-3. Rename the .env.example file to .env
+2. Run ** composer install ** on terminal. 
+3. Rename the .env.example file to .env, then run ** php artisan key:generate **
 4. Set Up your database. Get the database host, name, user, password and put them in the DB_HOST, DB_NAME, DB_USER, DB_PASSWORD .env file
     ### For example
     > DB_CONNECTION=mysql
