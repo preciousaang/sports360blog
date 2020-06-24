@@ -16,7 +16,7 @@
 
       <v-row>
       <v-col sm="12" cols="12" lg="8">
-        Connect with us on social networks!
+        Connect with us on social media
       </v-col>
         
         <v-col sm="12" cols="12" lg="4">
