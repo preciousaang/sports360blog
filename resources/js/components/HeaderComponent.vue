@@ -82,9 +82,11 @@
         </v-toolbar>
         <v-navigation-drawer absolute temporary v-model="drawer">
             <v-img class="logo" height="50" :src="require('./logo.png')" contain></v-img>
+            <br>
             <v-divider></v-divider>
-            <select style=" background-color: white; font-weight: bold;" onchange="doGTranslate(this);"><option value="">Select Language</option><option value="en|en">English</option><option value="en|fr">French</option><option value="en|de">German</option><option value="en|es">Spanish</option><option value="en|sw">Swahili</option></select><div id="google_translate_element2"></div>
+            <select style=" background-color: white; font-weight: bold; padding-left: 50px;" onchange="doGTranslate(this);"><option value="">Select Language</option><option value="en|en">English</option><option value="en|fr">French</option><option value="en|de">German</option><option value="en|es">Spanish</option><option value="en|sw">Swahili</option></select><div id="google_translate_element2"></div>
             <v-divider></v-divider>
+            <br>
                         
             <v-list nav dense flat>
             <template v-for="item in items">

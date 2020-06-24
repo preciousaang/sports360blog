@@ -39,7 +39,7 @@
       </v-card-title>
 
       <v-card-text class="py-2 white--text text-center">
-        Copyright &copy;{{ new Date().getFullYear() }} — <a style="color: white;text-decoration: none;font-weight: bold;" target="_blank" href="https://betpro360.com">BetPro360</a> - All Rights Reserved
+        Copyright &copy; 2020 — <a style="color: white;text-decoration: none;font-weight: bold;" target="_blank" href="https://betpro360.com">BetPro360</a> - All Rights Reserved
         <br>
         Designed by <a style="text-decoration: none; color: white; font-weight: bold;" target="_blank" href="https://wa.me/08097218247">AGZ</a>
       </v-card-text>
