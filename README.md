@@ -59,3 +59,9 @@
 7. Go into the folder resources >> js , edit the bootstrap.js file change the window.axios.defaults.baseURL value to https://your-domain/api
     ### For Example
     > window.axios.defaults.baseURL="https://betpro360.com/api"
+
+
+8. Set the root folder to ** public **
+
+
+## And you're good to go
