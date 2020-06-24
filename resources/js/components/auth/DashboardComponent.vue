@@ -1,6 +1,7 @@
 <template>
   <div>
-      <v-container>      
+        <header-component></header-component>
+      <v-container>              
            <h2 v-if="user" class="text-center">Welcome, {{user.name}}</h2>
       </v-container>
   </div>
@@ -9,7 +10,7 @@
 <script>
 import axios from 'axios';
 
-
+import AdminHeaderComponent from './AdminHeaderComponent';
 export default {
     data(){
         return {
@@ -20,7 +21,7 @@ export default {
         }
     },
     components: {
-
+        'header-component': AdminHeaderComponent
     },
     metaInfo(){
         return {

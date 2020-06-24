@@ -1,5 +1,6 @@
 <template>
     <div>
+        <header-component></header-component>
         <v-container>
             <v-card>
                 <v-app-bar dark>
@@ -28,12 +29,16 @@
 
 <script>
 import axios from 'axios';
+import AdminHeaderComponent from './AdminHeaderComponent';
 import {validationMixin} from 'vuelidate';
 import {required, minLength, maxLength, sameAs, integer, email, alphaNum} from 'vuelidate/lib/validators';
 export default {
     mixins: [
         validationMixin,
     ],
+    components: {
+        'header-component': AdminHeaderComponent
+    },
     validations: {
         email: {
             required,

@@ -1,7 +1,10 @@
 <template>
+    <div>
+    <header-component></header-component>
     <v-container>
+        
         <v-row justify-content-center>
-            <v-col cols="10">
+            <v-col cols="12">
                 <v-card>
                     <v-app-bar dark>
                         <v-toolbar-title>
@@ -38,12 +41,17 @@
             </v-col>
         </v-row>
     </v-container>
+    </div>
 </template>
 
 <script>
+import AdminHeaderComponent from './AdminHeaderComponent';
 export default {
     metaInfo: {
         title: 'Manage Users'
+    },
+    components: {
+        'header-component': AdminHeaderComponent
     },
     data(){
         return {

@@ -1,4 +1,6 @@
 <template>
+    <div>
+     <header-component></header-component>
     <v-container>
         <v-row justify-content-center>
             <v-col cols="10">
@@ -26,9 +28,11 @@
             </v-col>
         </v-row>
     </v-container>
+    </div>
 </template>
 
 <script>
+import AdminHeaderComponent from './AdminHeaderComponent';
 export default {
     metaInfo: {
         title: 'Subscribers List'
@@ -45,6 +49,9 @@ export default {
             subscribersCount: 0,
             per_page: 0,
         }
+    },
+    components: {
+        'header-component': AdminHeaderComponent
     },
     methods: {
         getSubscribers(page, per_page){

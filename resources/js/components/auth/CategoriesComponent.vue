@@ -1,4 +1,6 @@
 <template>
+    <div>
+    <header-component></header-component>
     <v-container>
         <v-row>
             <v-col cols="12" lg="4" md="4" sm="12">
@@ -57,10 +59,12 @@
             </v-col>
         </v-row>
     </v-container>
+    </div>
 </template>
 
 <script>
 import axios from 'axios';
+import HeaderComponent from './AdminHeaderComponent';
 import {validationMixin} from 'vuelidate'
 import Vuelidate from 'vuelidate'
 import {required} from 'vuelidate/lib/validators'
@@ -86,6 +90,9 @@ export default {
                    });
                }
            },
+    },
+    components: {
+        'header-component': HeaderComponent,
     },
     computed: {
         titleErrors(){

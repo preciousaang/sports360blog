@@ -1,5 +1,6 @@
 <template>
 <div>
+    <header-component></header-component>
     <v-container>
         <v-row :justify="'center'">
             <v-col cols="12" md="12" sm="12">
@@ -37,6 +38,7 @@
 </template>
 
 <script>
+import HeaderComponent from './AdminHeaderComponent'
 import {validationMixin} from 'vuelidate';
 import {required} from 'vuelidate/lib/validators';
 import swal from 'sweetalert';
@@ -95,7 +97,7 @@ export default {
 
         }
     },
-    components: {TiptapVuetify},
+    components: {TiptapVuetify, HeaderComponent},
     computed: {
         titleErrors(){
             const errors = [];

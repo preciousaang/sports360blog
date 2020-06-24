@@ -1,4 +1,6 @@
 <template>
+    <div>
+    <header-component></header-component>
     <v-container>
         <v-row :justify="'center'">
             <v-col cols="12" md="12" sm="12">
@@ -62,11 +64,12 @@
             </v-col>
         </v-row>
     </v-container>
-
+    </div>
 </template>
 
 <script>
 import axios from 'axios';
+import HeaderComponent from './AdminHeaderComponent'
 import swal from 'sweetalert';
 import FileUploader from './FileUploader';
 import { TiptapVuetify, Heading, Bold, Italic, Image, Strike, Underline, Code, Paragraph, BulletList, OrderedList, ListItem, Link, Blockquote, HardBreak, HorizontalRule, History } from 'tiptap-vuetify'
@@ -112,7 +115,7 @@ export default {
     metaInfo: {
         title: 'Edit Post'
     },
-    components: {TiptapVuetify},
+    components: {TiptapVuetify, HeaderComponent},
 
     methods: {
         getPost(id){
